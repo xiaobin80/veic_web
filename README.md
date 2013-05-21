@@ -1,4 +1,4 @@
 veic_web
 ========
 
-Veic  Corporation is web site
+Veic Corporation is web site
