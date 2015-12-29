@@ -1,0 +1,74 @@
+.navbar-default .navbar-nav > li > ul > li > a:hover {
+    color: #ffffff;
+    background-color: #0000FF;
+}
+
+h1 a {
+	display: inline-block;
+	/*
+	 * bigtop2.jpg
+	 * gifTop12.gif
+	 * gifTop22.gif
+	 * height: 70px;
+	 * padding: 20px 0 0 940px;
+	 */
+	/*
+	 * gifTop32.gif
+	 * height: 140px
+	 */
+	background: url('../img/gifTop32.gif') no-repeat;
+	height: 140px;
+	padding: 20px 0 0 1140px;
+	color: black;
+}
+
+h1 a:hover {
+	text-decoration: none;
+	color: black;
+}
+
+h2 a {
+	color: black;
+}
+
+h1,h2,h3 {
+	font-family: georgia, serif;
+}
+
+p.pubdate {
+	font-style: italic;
+	font-size: 0.9em;
+}
+
+.sidebar h3 {
+	font-size: 1em;
+	line-height: 1.2em;
+	margin-bottom: 0;
+}
+
+.sidebar ul {
+	margin-left: 0;
+	list-style-type: none;
+}
+/* homepage */
+#largeImg {
+	border: solid 1px #ccc;
+	width: 848px;
+	height: 270px;
+	padding: 5px;
+}
+
+.thumbs {
+	left: 170px;
+	top: 496px;
+}
+
+.thumbs img {
+	border: solid 1px #ccc;
+	width: 117px;
+	height: 90px;
+	padding: 4px;
+}
+.thumbs img:hover {
+	border-color: #FF9900;
+}

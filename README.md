@@ -11,14 +11,14 @@ Veic Corporation is web site
 /**
  * First, the development environment
  *   1. The language: PHP5.3.5 (VC6)
- * 	 2. IDE: Zend Studio 10.0.1 (V20130406)
- *   3. Database: MySQL 5.5.31
- *   4. Web Server: Apache 2.2.22 (VC6)
+ * 	 2. IDE: Zend Studio 10.5.1 (V20131205)
+ *   3. Database: MySQL 5.5.34
+ *   4. Web Server: Apache 2.2.25 (VC6)
  * 
  * Second, the project structure
- *   1. MVC framework - CodeIgniter version 2.1.3
+ *   1. MVC framework - CodeIgniter version 2.1.4
  *   2. Front end: Bootstrap
- *   3. JS library: JQuery1.9.1
+ *   3. JS library: JQuery1.10.2
  * 
  * Third, the program constitutes
  *   1. Controller parts:
