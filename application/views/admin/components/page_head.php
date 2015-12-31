@@ -7,10 +7,10 @@
     <!-- Bootstrap -->
     <link href="<?php echo site_url('../html/css/bootstrap.min.css'); ?>" rel="stylesheet" media="screen">
     <link href="<?php echo site_url('../html/css/admin.css'); ?>" rel="stylesheet" >
-    <script src="<?php echo site_url('../html/js/jquery-1.10.2.js'); ?>"></script>
+    <script src="<?php echo site_url('../html/js/jquery-1.11.1.js'); ?>"></script>
     <script src="<?php echo site_url('../html/js/bootstrap.min.js'); ?>"></script>
     <?php if (isset($sortable) && $sortable == TRUE): ?>
-	    <script type="text/javascript" src="<?php echo site_url('../html/js/jquery-ui-1.10.3.custom.min.js'); ?>"></script>
+	    <script type="text/javascript" src="<?php echo site_url('../html/js/jquery-ui.min.js'); ?>"></script>
 	    <script type="text/javascript" src="<?php echo site_url('../html/js/jquery.mjs.nestedSortable.js'); ?>"></script>
     <?php endif; ?>
     
