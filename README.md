@@ -18,7 +18,7 @@ Veic Corporation is web site
  * Second, the project structure
  *   1. MVC framework - CodeIgniter version 2.2.5
  *   2. Front end: Bootstrap
- *   3. JS library: JQuery1.11.1
+ *   3. JS library: JQuery1.11.3
  * 
  * Third, the program constitutes
  *   1. Controller parts:
