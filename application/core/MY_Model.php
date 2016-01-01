@@ -76,13 +76,22 @@ class MY_Model extends CI_Model {
 	 * 
 	 * @param array $sqlCond
 	 * @param string result column
-	 * @return array
+	 * @return string
 	 */
 	public function get_like($sqlCond, $resultCol) {
-		$conn = $this->_conn();
-		$result = $this->_myQuery($sqlCond, $resultCol, $conn);
-	    //$this->_closeConn($conn);
-		
+	    /**
+	     * <p> Changes to existing functions <p>
+	     * @link http://php.net/manual/en/changelog.mysql.php
+	     */
+	    if (version_compare(PHP_VERSION, '5.5.0') >= 0) {
+    		$conn = $this->_conn_i();
+    		$result = $this->_myQuery_i($sqlCond, $resultCol, $conn);
+	    }
+	    else {
+    		$conn = $this->_conn();
+    		$result = $this->_myQuery($sqlCond, $resultCol, $conn);
+    	    //$this->_closeConn($conn);
+	    }
 		return $result;
 	}
 	
@@ -195,6 +204,26 @@ class MY_Model extends CI_Model {
 		return $data;
 	}
 	
+	/**
+	 * <h4> Original MySQL API <h4>
+	 * <p> http://php.net/manual/en/book.mysql.php <p>
+	 * 
+	 * <table border="1">
+     *   <tr>
+     *     <th>sn</th>
+     *     <th>function name</th>
+     *     <th>memo</th>
+     *   </tr>
+     *   <tr>
+     *     <td>1</td>
+     *     <td>mysql_connect</td>
+     *     <td>connect</td>
+     *   </tr>
+     *   
+     * </table>
+     * 
+     * @link http://php.net/manual/en/function.mysql-connect.php mysql_connect
+	 */
 	private function _conn() {
 		//$con = mysql_pconnect("localhost","tdtc2014","qazxsw");
 		$conn = mysql_connect("localhost","tdtc2014","qazxsw");
@@ -203,18 +232,165 @@ class MY_Model extends CI_Model {
 		return $conn;
 	}
 	
+	/**
+	 * <h4> Original MySQL API <h4>
+	 * <p> http://php.net/manual/en/book.mysql.php <p>
+	 *
+	 * <table border="1">
+	 *   <tr>
+	 *     <th>sn</th>
+	 *     <th>function name</th>
+	 *     <th>memo</th>
+	 *   </tr>
+	 *   <tr>
+	 *     <td>1</td>
+	 *     <td>mysql_close</td>
+	 *     <td>close connect</td>
+	 *   </tr>
+	 *
+	 * </table>
+	 *
+	 * @link http://php.net/manual/en/function.mysql-close.php mysql_close
+	 */	
 	private function _closeConn($conn) {
 		mysql_close($conn);
 	}
-	
+
+	/**
+	 * <h4> Original MySQL API <h4>
+	 * <p> http://php.net/manual/en/book.mysql.php <p>
+	 *
+	 * <table border="1">
+	 *   <tr>
+	 *     <th>sn</th>
+	 *     <th>function name</th>
+	 *     <th>memo</th>
+	 *   </tr>
+	 *   <tr>
+	 *     <td>1</td>
+	 *     <td>mysql_select_db</td>
+	 *     <td>choice Database</td>
+	 *   </tr>
+	 *   <tr>
+	 *     <td>2</td>
+	 *     <td>mysql_query</td>
+	 *     <td>SQL query</td>
+	 *   </tr>
+	 *   <tr>
+	 *     <td>3</td>
+	 *     <td>mysql_result</td>
+	 *     <td>result array</td>
+	 *   </tr>
+	 *
+	 * </table>
+	 *
+	 * @link http://php.net/manual/en/function.mysql-select-db.php mysql_select_db
+	 * @link http://php.net/manual/en/function.mysql-query.php mysql_query
+	 * @link http://php.net/manual/en/function.mysql-result.php mysql_result
+	 */
 	private function _myQuery($sql, $resultCol, $conn) {
 		if (!$conn)
 			die('Could not connect: ' . mysql_error());
 	
 		$db_selected = mysql_select_db("carnumber", $conn);
-		$result = mysql_query($sql,$conn);
+		$result = mysql_query($sql, $conn);
 		return  mysql_result($result, 0, $resultCol);
 		//print_r(mysql_fetch_row($result));
+	}
+	
+	/**
+	 * <h4> MySQL Improved Extension <h4>
+	 * <p> http://php.net/manual/en/book.mysqli.php <p>
+	 * 
+	 * <table border="1">
+     *   <tr>
+     *     <th>sn</th>
+     *     <th>method name</th>
+     *     <th>memo</th>
+     *   </tr>
+     *   <tr>
+     *     <td>1</td>
+     *     <td>mysqli_connect</td>
+     *     <td>connect</td>
+     *   </tr>
+     *   
+     * </table>
+     * 
+     * @link http://php.net/manual/en/function.mysqli-connect.php mysqli_connect
+	 */
+	private function _conn_i() {
+	    $conn = mysqli_connect("localhost","tdtc2014","qazxsw");
+	    if (!$conn)
+	        die('Could not connect: ' . mysqli_connect_error());
+	    return $conn;
+	}
+	
+	/**
+	 * <h4> MySQL Improved Extension <h4>
+	 * <p> http://php.net/manual/en/book.mysqli.php <p>
+	 *
+	 * <table border="1">
+	 *   <tr>
+	 *     <th>sn</th>
+	 *     <th>method name</th>
+	 *     <th>memo</th>
+	 *   </tr>
+	 *   <tr>
+	 *     <td>1</td>
+	 *     <td>mysqli_close</td>
+	 *     <td>close connect</td>
+	 *   </tr>
+	 *
+	 * </table>
+	 *
+	 * @link http://php.net/manual/en/mysqli.close.php mysqli_close
+	 */
+	private function _closeConn_i($conn) {
+	    mysqli_close($conn);
+	}
+	
+	/**
+	 * <h4> MySQL Improved Extension <h4>
+	 * <p> http://php.net/manual/en/book.mysqli.php <p>
+	 *
+	 * <table border="1">
+	 *   <tr>
+	 *     <th>sn</th>
+	 *     <th>method name</th>
+	 *     <th>memo</th>
+	 *   </tr>
+	 *   <tr>
+	 *     <td>1</td>
+	 *     <td>mysqli_select_db</td>
+	 *     <td>choice Database</td>
+	 *   </tr>
+	 *   <tr>
+	 *     <td>2</td>
+	 *     <td>mysqli_query</td>
+	 *     <td>SQL query</td>
+	 *   </tr>
+	 *   <tr>
+	 *     <td>3</td>
+	 *     <td>mysqli_fetch_assoc</td>
+	 *     <td>Fetch a result row as an associative array</td>
+	 *   </tr>
+	 *
+	 * </table>
+	 *
+	 * @link http://php.net/manual/en/mysqli.select-db.php mysqli_select_db
+	 * @link http://php.net/manual/en/mysqli.query.php mysqli_query
+	 * @link http://php.net/manual/en/mysqli-result.fetch-assoc.php mysqli_fetch_assoc
+	 */	
+	private function _myQuery_i($sql, $resultCol, $conn) {
+	    if (!$conn)
+	        die('Could not connect: ' . mysqli_connect_error());
+	
+	    $db_selected = mysqli_select_db($conn, "carnumber");
+	    $result = mysqli_query($conn, $sql);
+
+	    $row = mysqli_fetch_assoc($result);
+        
+        return  $row[$resultCol];
 	}
 }
 
