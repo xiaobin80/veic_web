@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Bootstrap -->
     <link href="<?php echo site_url('../html/css/bootstrap.min.css'); ?>" rel="stylesheet" media="screen">
-    <script src="<?php echo site_url('../html/js/jquery-1.11.1.js'); ?>"></script>
+    <script src="<?php echo site_url('../html/js/jquery-1.11.3.js'); ?>"></script>
     <script type="text/javascript" src="<?php echo site_url('../html/js/jquery-ui.min.js'); ?>"></script>
     <script src="<?php echo site_url('../html/js/bootstrap.min.js'); ?>"></script>
     
