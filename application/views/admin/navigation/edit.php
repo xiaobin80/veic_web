@@ -13,8 +13,8 @@
 			<td><?php echo form_dropdown('lang_id', $lang_list, $this->input->post('lang_id') ? $this->input->post('lang_id') : $navigation->lang_id); ?></td>
 		</tr>
 		<tr>
-			<td>Link</td>
-			<td><?php echo form_input('link', set_value('link', $navigation->link), $inputAttr); ?></td>
+			<td>Link Address</td>
+			<td><?php echo form_input('linkAddr', set_value('linkAddr', $navigation->linkAddr), $inputAttr); ?></td>
 		</tr>
 		<tr>
 			<td>Template</td>
