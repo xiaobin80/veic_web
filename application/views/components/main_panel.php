@@ -5,7 +5,7 @@
         	</section>
 	        <nav class="navbar navbar-default" role="navigation">
 	          	<div class="collapse navbar-collapse">
-	          		<a class="navbar-brand" href="<?php echo site_url(APPPATH . '..'); ?>"><?php echo $this->Glossary_M->get_word('home', $this->data['lang_id']); ?></a>
+	          		<a class="navbar-brand" href="<?php echo site_url(APPPATH . '..'); ?>"><?php echo $this->Glossary_M->get_word('page', $this->data['lang_id']); ?></a>
 		            <ul class="nav navbar-nav">
 		            <?php echo get_menu($menu, $menu_prefix); ?>
 		            </ul>
