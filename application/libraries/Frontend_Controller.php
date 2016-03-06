@@ -60,19 +60,6 @@ class Frontend_Controller extends MY_Controller {
 	}
 	
 	/**
-	 * <p> Read the specified conditions table data counts. </p>
-	 * 
-	 * @param string $tableName
-	 * @param array $lang_id & $type_id
-	 * @return integer
-	 */
-	private function _get_count($tableName, $where) {
-		$this->db->where($where);
-		$this->db->from($tableName);
-		return $this->db->count_all_results();
-	}
-	
-	/**
 	 * <p> Gets the specified data table's foreign key values </p>
 	 *
 	 * @param string $model
@@ -136,7 +123,7 @@ class Frontend_Controller extends MY_Controller {
 	 */
 	private function _article_list_view($templatePath, $where, $result) {
 		// pagination begin
-		$counts = $this->_get_count('articles', $where);
+		$counts = $this->Article_M->get_count('articles', $where);
 		
 		$perpage = 13;
 		if ($counts > $perpage) {
