@@ -10,9 +10,9 @@ Veic Corporation is web site
  		 */
 /**
  * First, the development environment
- *   1. The language: PHP5.6.17 (VC11)
+ *   1. The language: PHP5.6.19 (VC11)
  *   2. IDE: Eclipse for PHP Developers(Mars.1) - v4.5.1
- *   3. Database: MySQL 5.5.47
+ *   3. Database: MySQL 5.5.48
  *   4. Web Server: Apache 2.4.18 (VC11)
  * 
  * Second, the project structure
