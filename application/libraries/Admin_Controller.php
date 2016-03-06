@@ -26,11 +26,13 @@ class Admin_Controller extends MY_Controller {
 		// Program controller
 		$this->data['sreach_zh'] = $this->Language_M->get_by('name = "' . $this->data['lang_zh'] . '"', TRUE);
 		$this->data['sreach_en'] = $this->Language_M->get_by('name = "' . $this->data['lang_en'] . '"', TRUE);
+		$this->data['sreach_ja'] = $this->Language_M->get_by('name = "' . $this->data['lang_ja'] . '"', TRUE);
 
 		
 		$this->data['lang_list'] = array(
 			$this->data['sreach_zh']->id => $this->data['sreach_zh']->description,
-			$this->data['sreach_en']->id => $this->data['sreach_en']->description
+			$this->data['sreach_en']->id => $this->data['sreach_en']->description,
+			$this->data['sreach_ja']->id => $this->data['sreach_ja']->description
 		);
 		
 		$this->data['img_list'] = $this->_get_dropDown_list('Image_M', 'id', 'name');

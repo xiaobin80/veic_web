@@ -17,6 +17,10 @@ class Frontend_Controller extends MY_Controller {
 			$langName = $this->data['lang_zh'];
 		}
 		
+		if ($this->data['flag_ja']) {
+			$langName = $this->data['lang_ja'];
+		}
+		
 		$this->data['lang_id'] = $this->_get_langID($langName);
 		
 		// Meta title
