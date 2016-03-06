@@ -158,7 +158,7 @@ class Frontend_Controller extends MY_Controller {
 	 * @param string $linkAddr
 	 * @return string
 	 */
-	protected function get_navInstr($linkAddr, $langID, $level) {
+	protected function get_navInstr($linkAddr, $langID, $level = 3) {
 		$result = array();
 		$homeWord = $this->Glossary_M->get_word('home', $langID);
 		
