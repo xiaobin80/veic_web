@@ -1,8 +1,8 @@
 <section>
-	<?php if(count($article_list)): ?>
+	<?php if(count($menu_team_list)): ?>
 		<ul>
-			<?php foreach ($article_list as $article): ?>
-				<li><?php echo anchor('article/view/' . $article->id, $article->title . ' - ' . $article->pubdate); ?></li>
+			<?php foreach ($menu_team_list as $menu): ?>
+				<li><?php echo anchor('page/invoke/' . $menu->linkAddr, $menu->name); ?></li>
 			<?php endforeach; ?>
 		</ul>
 	<?php endif; ?>

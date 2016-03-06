@@ -40,14 +40,18 @@ class Page extends Frontend_Controller {
 	public function invoke($param) {
 		if ($param == null)
 			redirect('errors/error_404');
-			
+		
 		$iCount = strpos($param, '-');
+		$iLevel = 2;
+		
+		if ($iCount) $iLevel = 3;
+		
+		$this->data['breadData'] = $this->get_navInstr($this->get_space($param), $this->data['lang_id'], $iLevel);
 		
 		if ($iCount) {
-			$this->data['breadData'] = $this->get_navInstr($this->get_space($param), $this->data['lang_id']);
-			
 			$strPrefix = substr($param, 0, $iCount);
 			$strName = substr(strrchr($param, '-'), 1);
+			
 			switch ($strPrefix) {
 				case 'Product': 
 					$this->_product_view($strName);
@@ -67,9 +71,25 @@ class Page extends Frontend_Controller {
 			}
 		}
 		else {
-			echo $param . ' Found not links';
+			//echo $param . ' Found not links';
+			$this->_menu_team_view($param);
 		}
 		
+	}
+	
+	private function _menu_team_view($name) {
+		$menuTeamTemplate = 'templates/menuList';
+		
+		$where = array('lang_id' => $this->data['lang_id'], 'linkAddr' => $name);
+		
+		$termMenuID = $this->Navigation_M->get_by($where, TRUE)->id;
+		
+		$whereList = array('lang_id' => $this->data['lang_id'], 'parent_id' => $termMenuID);
+		$this->data['menu_team_list'] = $this->Navigation_M->get_by($whereList, FALSE);
+		
+		$this->data['menu_prefix'] = NULL;
+		$this->data['subview'] = $menuTeamTemplate;
+		$this->load->view('_main_layout', $this->data);
 	}
 	
 	private function _product_view($name) {
