@@ -39,7 +39,7 @@ class Page extends Frontend_Controller {
 	
 	public function invoke($param) {
 		if ($param == null)
-			redirect('errors/error_404');
+			redirect('errors/error_404', 'refresh');
 		
 		$iCount = strpos($param, '-');
 		$iLevel = 2;
