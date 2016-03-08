@@ -64,7 +64,7 @@ class Frontend_Controller extends MY_Controller {
 	 * @return string
 	 */
 	protected function get_foreignKey($model, $where, $foreignKey) {
-		if (empty($this->$model->get_count($where))) redirect('errors/error_404');;
+		if (empty($this->$model->get_count($where))) redirect('errors/error_404', 'refresh');;
 
 		return $this->$model->get_by($where, TRUE)->$foreignKey;
 	}
@@ -160,7 +160,7 @@ class Frontend_Controller extends MY_Controller {
 		$result = array();
 		$homeWord = $this->Glossary_M->get_word('home', $langID);
 		
-		$srvLink = $_SERVER['HTTP_HOST'] . $this->data['menu_href'];
+		$srvLink = $_SERVER['SERVER_ADDR'] . $this->data['menu_href'];
 		$home = array(
 				'name'=>$homeWord, 
 				'linkAddr' => $srvLink, 

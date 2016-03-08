@@ -16,7 +16,7 @@ Veic Corporation is web site
  *   4. Web Server: Apache 2.4.18 (VC11)
  * 
  * Second, the project structure
- *   1. MVC framework - CodeIgniter version 2.2.5
+ *   1. MVC framework - CodeIgniter version 2.2.6
  *   2. Front end: Bootstrap
  *   3. JS library: JQuery1.11.3
  * 
