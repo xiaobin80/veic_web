@@ -99,12 +99,17 @@ class Page extends Frontend_Controller {
 		// get status name
 		$statu_id = $this->get_foreignKey('Product_M', $where, 'statu_id');
 		$this->data['productStatus'] = $this->Statu_M->get($statu_id)->name;
-		
-		if ($this->data['flag_zh']) {
-			$productTemplate = 'templates/production_cn';
-		}
-		else {
-			$productTemplate = 'templates/production';
+				
+		switch ($this->data['flag_iLang']) {
+			case 0:
+				$productTemplate = 'templates/production_cn';
+				break;
+			case 1:
+				$productTemplate = 'templates/production';
+				break;
+			case 2:
+				$productTemplate = 'templates/production_ja';
+				break;
 		}
 		
 		// get image id

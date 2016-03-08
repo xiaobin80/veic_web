@@ -8,20 +8,25 @@ class MY_Controller extends CI_Controller {
 		
 		$this->data['errors'] = '';
 		
-		// zh-cn or en-us or ja-jp
-		$this->data['lang_zh'] = config_item('lang_zh');
-		$this->data['lang_en'] = config_item('lang_en');
-		$this->data['lang_ja'] = config_item('lang_ja');
+		// zh-cn or en-us or ja-jp		
+		$this->data['langs'] = array(
+			config_item('lang_zh'),
+			config_item('lang_en'),
+			config_item('lang_ja')
+		);
 		
-		$this->data['flag_zh'] = FALSE;
-		$this->data['flag_ja'] = FALSE;
-		if (stristr($_SERVER['SCRIPT_NAME'], $this->data['lang_zh'])) {
-			$this->data['flag_zh'] = TRUE;
+		$this->data['flag_iLang'] = 0;
+		
+		$langs = $this->data['langs'];
+		
+		$i = 0;
+		foreach ($langs as $lang) {
+			if (stristr($_SERVER['SCRIPT_NAME'], $lang)) {
+				$this->data['flag_iLang'] = $i;
+			}
+			$i++;
 		}
 		
-		if (stristr($_SERVER['SCRIPT_NAME'], $this->data['lang_ja'])) {
-			$this->data['flag_ja'] = TRUE;
-		}
 	}
 	
 	/**

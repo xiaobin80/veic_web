@@ -12,15 +12,7 @@ class Frontend_Controller extends MY_Controller {
 		$this->load->model('Glossary_M');
 		
 		// Language ID
-		$langName = $this->data['lang_en'];
-		if ($this->data['flag_zh']) {
-			$langName = $this->data['lang_zh'];
-		}
-		
-		if ($this->data['flag_ja']) {
-			$langName = $this->data['lang_ja'];
-		}
-		
+		$langName = $this->data['langs'][$this->data['flag_iLang']];
 		$this->data['lang_id'] = $this->_get_langID($langName);
 		
 		// Meta title
@@ -72,6 +64,8 @@ class Frontend_Controller extends MY_Controller {
 	 * @return string
 	 */
 	protected function get_foreignKey($model, $where, $foreignKey) {
+		if (empty($this->$model->get_count($where))) redirect('errors/error_404');;
+
 		return $this->$model->get_by($where, TRUE)->$foreignKey;
 	}
 	
@@ -127,7 +121,7 @@ class Frontend_Controller extends MY_Controller {
 	 */
 	private function _article_list_view($templatePath, $where, $result) {
 		// pagination begin
-		$counts = $this->Article_M->get_count('articles', $where);
+		$counts = $this->Article_M->get_count($where);
 		
 		$perpage = 13;
 		if ($counts > $perpage) {

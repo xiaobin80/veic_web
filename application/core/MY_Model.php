@@ -27,13 +27,13 @@ class MY_Model extends CI_Model {
 	/**
 	 * <p> Read the specified conditions table data counts. </p>
 	 *
-	 * @param string $tableName
+	 * @param string where
 	 * @param array $lang_id & $type_id
 	 * @return integer
 	 */
-	public function get_count($tableName, $where) {
+	public function get_count($where) {
 		$this->db->where($where);
-		$this->db->from($tableName);
+		$this->db->from($this->_table_name);
 		return $this->db->count_all_results();
 	}
 	
