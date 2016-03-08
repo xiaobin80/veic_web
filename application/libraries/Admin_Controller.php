@@ -15,23 +15,27 @@ class Admin_Controller extends MY_Controller {
 		$this->load->model('Sector_M');
 		
 		// Language ID
-		$langName = $this->data['lang_en'];
-		if ($this->data['flag_zh']) {
-			$langName = $this->data['lang_zh'];
-		}
+		$langName = $this->data['langs'][$this->data['flag_iLang']];
 		
 		$langID = $this->_get_langID($langName);
 		$this->data['lang_cond'] = array('lang_id' => $langID);
 		
-		// Program controller
-		$this->data['sreach_zh'] = $this->Language_M->get_by('name = "' . $this->data['lang_zh'] . '"', TRUE);
-		$this->data['sreach_en'] = $this->Language_M->get_by('name = "' . $this->data['lang_en'] . '"', TRUE);
-
+		// DropDownList Language
+		$langs = array();
+		$langIdKeys = array();
+		$langDesVals = array();
 		
-		$this->data['lang_list'] = array(
-			$this->data['sreach_zh']->id => $this->data['sreach_zh']->description,
-			$this->data['sreach_en']->id => $this->data['sreach_en']->description
-		);
+		foreach ($this->data['langs'] as $lang) {
+			$name = $this->Language_M->get_by('name = "' . $lang . '"', TRUE);
+			array_push($langs, $name);
+		}
+		
+		foreach ($langs as $langInfo) {
+			array_push($langIdKeys, $langInfo->id);
+			array_push($langDesVals, $langInfo->description);
+		}
+		
+		$this->data['lang_list'] = array_combine($langIdKeys, $langDesVals);
 		
 		$this->data['img_list'] = $this->_get_dropDown_list('Image_M', 'id', 'name');
 		

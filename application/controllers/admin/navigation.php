@@ -19,7 +19,7 @@ class Navigation extends Admin_Controller {
 				'name',
 				'template',
 				'lang_id',
-				'link'
+				'linkAddr'
 		);
 		
 		if ($id) {

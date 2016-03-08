@@ -12,11 +12,7 @@ class Frontend_Controller extends MY_Controller {
 		$this->load->model('Glossary_M');
 		
 		// Language ID
-		$langName = $this->data['lang_en'];
-		if ($this->data['flag_zh']) {
-			$langName = $this->data['lang_zh'];
-		}
-		
+		$langName = $this->data['langs'][$this->data['flag_iLang']];		
 		$this->data['lang_id'] = $this->_get_langID($langName);
 		
 		// Meta title
@@ -57,19 +53,6 @@ class Frontend_Controller extends MY_Controller {
 		$result = $this->pagination->create_links();
 		
 		return $result;
-	}
-	
-	/**
-	 * <p> Read the specified conditions table data counts. </p>
-	 * 
-	 * @param string $tableName
-	 * @param array $lang_id & $type_id
-	 * @return integer
-	 */
-	private function _get_count($tableName, $where) {
-		$this->db->where($where);
-		$this->db->from($tableName);
-		return $this->db->count_all_results();
 	}
 	
 	/**
@@ -136,7 +119,7 @@ class Frontend_Controller extends MY_Controller {
 	 */
 	private function _article_list_view($templatePath, $where, $result) {
 		// pagination begin
-		$counts = $this->_get_count('articles', $where);
+		$counts = $this->Article_M->get_count($where);
 		
 		$perpage = 13;
 		if ($counts > $perpage) {
