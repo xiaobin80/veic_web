@@ -154,7 +154,7 @@ class Frontend_Controller extends MY_Controller {
 	 * @param string $linkAddr
 	 * @return string
 	 */
-	protected function get_navInstr($linkAddr, $langID) {
+	protected function get_navInstr($linkAddr, $langID, $level = 3) {
 		$result = array();
 		$homeWord = $this->Glossary_M->get_word('home', $langID);
 		
@@ -168,23 +168,30 @@ class Frontend_Controller extends MY_Controller {
 		$curNavRow = $this->Navigation_M->get_by($where, TRUE);
 		$suffixName = $curNavRow->name;
 		
-		$parentID = $curNavRow->parent_id;
-		$whereParent = 'id = ' . $parentID;
-		$parentNavRow = $this->Navigation_M->get_by($whereParent, TRUE);
-		$prefixName = $parentNavRow->name;
-		
-		$prefixArray = array('name' => $prefixName, 
-				'linkAddr' => $parentNavRow->linkAddr, 
-				'homeFlag' => FALSE);
-		
 		$suffixArray = array(
-				'name' => $suffixName, 
-				'linkAddr' => $linkAddr, 
+				'name' => $suffixName,
+				'linkAddr' => $linkAddr,
 				'homeFlag' => FALSE);
 		
-		$result[0] = $home;
-		$result[1] = $prefixArray;
-		$result[2] = $suffixArray;
+		if ($level > 2) {
+			$parentID = $curNavRow->parent_id;
+			$whereParent = 'id = ' . $parentID;
+			$parentNavRow = $this->Navigation_M->get_by($whereParent, TRUE);
+			$prefixName = $parentNavRow->name;
+			
+			$prefixArray = array(
+					'name' => $prefixName, 
+					'linkAddr' => $parentNavRow->linkAddr, 
+					'homeFlag' => FALSE);
+			
+			$result[0] = $home;
+			$result[1] = $prefixArray;
+			$result[2] = $suffixArray;
+		}
+		else {
+			$result[0] = $home;
+			$result[1] = $suffixArray;
+		}
 		
 		return $result;
 	}

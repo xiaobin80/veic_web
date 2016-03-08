@@ -5,7 +5,7 @@
  * Set time zone
  *---------------------------------------------------------------
  */
-    date_default_timezone_set('Asia/Shanghai');
+    date_default_timezone_set('America/New_York');
 
 /*
  *---------------------------------------------------------------
