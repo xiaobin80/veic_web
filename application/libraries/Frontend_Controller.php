@@ -64,7 +64,7 @@ class Frontend_Controller extends MY_Controller {
 	 * @return string
 	 */
 	protected function get_foreignKey($model, $where, $foreignKey) {
-		if (empty($this->$model->get_count($where))) redirect('errors/error_404', 'refresh');
+		if ($this->$model->get_count($where) == 0) redirect('errors/error_404', 'refresh');
 
 		return $this->$model->get_by($where, TRUE)->$foreignKey;
 	}
