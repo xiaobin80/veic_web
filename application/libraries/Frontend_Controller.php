@@ -21,9 +21,14 @@ class Frontend_Controller extends MY_Controller {
 		$this->data['meta_title'] = $companyName . ' - ' . $webSite;
 		
 		// Fetch navigation
-		$this->data['menu'] = $this->Navigation_M->get_nested($this->data['lang_id']);
-		$this->data['menu_prefix'] = 'page/invoke/';
-		$this->data['menu_href'] = stristr($_SERVER['SCRIPT_NAME'], 'index.php', TRUE);
+		$menuData = $this->Navigation_M->get_nested($this->data['lang_id']);
+		if (empty($menuData))  
+		    show_404();
+		else {
+		    $this->data['menu'] = $menuData;
+		    $this->data['menu_prefix'] = 'page/invoke/';
+		    $this->data['menu_href'] = stristr($_SERVER['SCRIPT_NAME'], 'index.php', TRUE);
+		}
 		
 		// Breadcrumbs
 		$this->data['body'] = $this->Glossary_M->get_word('body', $this->data['lang_id']);
@@ -39,15 +44,17 @@ class Frontend_Controller extends MY_Controller {
 	 * @param integer $perpage
 	 * @return string
 	 */
-	private function _get_pagination($counts, $perpage) {
+	private function _get_pagination($counts, $perpage, $iSegUri = 4) {
 		$result = '';
 
-		$strUrl = $this->uri->rsegment(1) . '/' . $this->uri->rsegment(2) . '/' . $this->uri->rsegment(3) . '/';
-			
+		$strUrl = '';
+		for ($i = 1; $i < $iSegUri; $i++)
+		    $strUrl .= $this->uri->rsegment($i) . '/';
+		
 		$config['base_url'] = site_url($strUrl);
 		$config['total_rows'] = $counts;
 		$config['per_page'] = $perpage;
-		$config['uri_segment'] = 4;
+		$config['uri_segment'] = $iSegUri;
 			
 		$this->pagination->initialize($config);
 		$result = $this->pagination->create_links();
@@ -64,7 +71,8 @@ class Frontend_Controller extends MY_Controller {
 	 * @return string
 	 */
 	protected function get_foreignKey($model, $where, $foreignKey) {
-		if ($this->$model->get_count($where) == 0) redirect('errors/error_404', 'refresh');
+		if ($this->$model->get_count($where) == 0) 
+		    redirect('errors/error_404', 'refresh');
 
 		return $this->$model->get_by($where, TRUE)->$foreignKey;
 	}
