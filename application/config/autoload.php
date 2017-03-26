@@ -64,7 +64,7 @@ $autoload['libraries'] = array('database');
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url', 'form', 'html', 'tdtc_helper');
+$autoload['helper'] = array('security', 'url', 'form', 'html', 'tdtc_helper');
 
 
 /*

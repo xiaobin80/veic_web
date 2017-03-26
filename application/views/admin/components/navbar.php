@@ -1,6 +1,6 @@
 		<nav class="navbar navbar-default navbar-inverse" role="navigation">
           	<div class="collapse navbar-collapse">
-          		<a class="navbar-brand" href="<?php echo site_url(APPPATH . '..'); ?>">Home</a>
+          		<a class="navbar-brand" href="<?php echo site_url('' . '..'); ?>">Home</a>
 	            <ul class="nav navbar-nav">
 	              <li class="active"><a href="<?php echo site_url('admin/dashboard'); ?>">Dashboard</a></li>
 	              <li><?php echo anchor('admin/user', 'Users'); ?></li>
