@@ -20,7 +20,7 @@ class Article_M extends MY_Model {
 			'pubdate' => array (
 					'field' => 'pubdate',
 					'label' => 'Publication date',
-					'rules' => 'trim|required|excatlength[10]|xss_clean' 
+					'rules' => 'trim|required|exact_length[10]|xss_clean' 
 			),
 			'title' => array (
 					'field' => 'title',
