@@ -168,7 +168,8 @@ class Frontend_Controller extends MY_Controller {
 		$result = array();
 		$homeWord = $this->Glossary_M->get_word('home', $langID);
 		
-		$srvLink = $_SERVER['SERVER_ADDR'] . $this->data['menu_href'];
+		//$srvLink = $_SERVER['SERVER_ADDR'] . $this->data['menu_href'];
+		$srvLink = $this->data['menu_href'];
 		$home = array(
 				'name'=>$homeWord, 
 				'linkAddr' => $srvLink, 

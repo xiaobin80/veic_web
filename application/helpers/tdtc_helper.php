@@ -67,7 +67,8 @@ function get_breadcrumb($array, $prefix = NULL) {
 	if (count($array)) {
 		foreach ($array as $item) {
 			if ($item['homeFlag']) {
-				$str .= '<li><a href="http://' . $item['linkAddr'] . '">' . e($item['name']) . '</a></li>' . PHP_EOL;
+				// '<li><a href="http://'
+				$str .= '<li><a href="' . $item['linkAddr'] . '">' . e($item['name']) . '</a></li>' . PHP_EOL;
 			}
 			else 
 			  $str .= '<li><a href="' . $prefix . $item['linkAddr'] . '">' . e($item['name']) . '</a></li>' . PHP_EOL;

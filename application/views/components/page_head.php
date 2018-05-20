@@ -5,12 +5,12 @@
   	<meta http-equiv="Content-Type" content="text/html; charset=utf-8 /"> 
     <meta http-equiv="X-UA-Compatible" name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Bootstrap -->
-    <link href="<?php echo site_url('../html/css/bootstrap.min.css'); ?>" rel="stylesheet" media="screen">
-    <script src="<?php echo site_url('../html/js/jquery-1.11.3.js'); ?>"></script>
-    <script type="text/javascript" src="<?php echo site_url('../html/js/jquery-ui.min.js'); ?>"></script>
-    <script src="<?php echo site_url('../html/js/bootstrap.min.js'); ?>"></script>
+    <link href="<?php echo site_url('html/css/bootstrap.min.css'); ?>" rel="stylesheet" media="screen">
+    <script src="<?php echo site_url('html/js/jquery-1.11.3.js'); ?>"></script>
+    <script type="text/javascript" src="<?php echo site_url('html/js/jquery-ui.min.js'); ?>"></script>
+    <script src="<?php echo site_url('html/js/bootstrap.min.js'); ?>"></script>
     
-    <link href="<?php echo site_url('../html/css/styles.css'); ?>" rel="stylesheet" />
-    <link href="<?php echo site_url('../html/css/ui-lightness/jquery-ui.min.css'); ?>" rel="stylesheet" />
+    <link href="<?php echo site_url('html/css/styles.css'); ?>" rel="stylesheet" />
+    <link href="<?php echo site_url('html/css/ui-lightness/jquery-ui.min.css'); ?>" rel="stylesheet" />
     
   </head>
