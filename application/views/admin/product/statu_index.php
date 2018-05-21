@@ -12,9 +12,9 @@
 		<tbody>
 			<?php if (count($status)): foreach ($status as $statu): ?>
 				<tr>
-					<td><?php echo anchor('admin/product/status/edit/' . $statu->id, $statu->name); ?></td>
-					<td><?php echo btn_edit('admin/product/status/edit/' . $statu->id); ?></td>
-					<td><?php echo btn_delete('admin/product/status/delete/' . $statu->id); ?></td>
+					<td><?php echo anchor($this->data['langName'] . 'admin/product/status/edit/' . $statu->id, $statu->name); ?></td>
+					<td><?php echo btn_edit($this->data['langName'] . 'admin/product/status/edit/' . $statu->id); ?></td>
+					<td><?php echo btn_delete($this->data['langName'] . 'admin/product/status/delete/' . $statu->id); ?></td>
 				</tr>
 			<?php endforeach; ?>
 			<?php else: ?>

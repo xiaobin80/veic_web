@@ -12,9 +12,9 @@
 		<tbody>
 			<?php if (count($qualifications)): foreach ($qualifications as $qualification): ?>
 				<tr>
-					<td><?php echo anchor('admin/qualification/edit/' . $qualification->id, $qualification->name); ?></td>
-					<td><?php echo btn_edit('admin/qualification/edit/' . $qualification->id); ?></td>
-					<td><?php echo btn_delete('admin/qualification/delete/' . $qualification->id); ?></td>
+					<td><?php echo anchor($this->data['langName'] . 'admin/qualification/edit/' . $qualification->id, $qualification->name); ?></td>
+					<td><?php echo btn_edit($this->data['langName'] . 'admin/qualification/edit/' . $qualification->id); ?></td>
+					<td><?php echo btn_delete($this->data['langName'] . 'admin/qualification/delete/' . $qualification->id); ?></td>
 				</tr>
 			<?php endforeach; ?>
 			<?php else: ?>

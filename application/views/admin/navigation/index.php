@@ -12,9 +12,9 @@
 		<tbody>
 			<?php if (count($navigations)): foreach ($navigations as $navigation): ?>
 				<tr>
-					<td><?php echo anchor('admin/navigation/edit/' . $navigation->id, $navigation->name); ?></td>
-					<td><?php echo btn_edit('admin/navigation/edit/' . $navigation->id); ?></td>
-					<td><?php echo btn_delete('admin/navigation/delete/' . $navigation->id); ?></td>
+					<td><?php echo anchor($this->data['langName'] . 'admin/navigation/edit/' . $navigation->id, $navigation->name); ?></td>
+					<td><?php echo btn_edit($this->data['langName'] . 'admin/navigation/edit/' . $navigation->id); ?></td>
+					<td><?php echo btn_delete($this->data['langName'] . 'admin/navigation/delete/' . $navigation->id); ?></td>
 				</tr>
 			<?php endforeach; ?>
 			<?php else: ?>

@@ -14,6 +14,7 @@ class Frontend_Controller extends MY_Controller {
 		// Language ID
 		$langName = $this->data['langs'][$this->data['flag_iLang']];
 		$this->data['lang_id'] = $this->_get_langID($langName);
+		$this->data['langName'] = $langName;
 		
 		// Meta title
 		$companyName = $this->Glossary_M->get_word('VEIC', $this->data['lang_id']);

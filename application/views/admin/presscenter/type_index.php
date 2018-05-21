@@ -12,9 +12,9 @@
 		<tbody>
 			<?php if (count($types)): foreach ($types as $type): ?>
 				<tr>
-					<td><?php echo anchor('admin/presscenter/types/edit/' . $type->id, $type->name); ?></td>
-					<td><?php echo btn_edit('admin/presscenter/types/edit/' . $type->id); ?></td>
-					<td><?php echo btn_delete('admin/presscenter/types/delete/' . $type->id); ?></td>
+					<td><?php echo anchor($this->data['langName'] . 'admin/presscenter/types/edit/' . $type->id, $type->name); ?></td>
+					<td><?php echo btn_edit($this->data['langName'] . 'admin/presscenter/types/edit/' . $type->id); ?></td>
+					<td><?php echo btn_delete($this->data['langName'] . 'admin/presscenter/types/delete/' . $type->id); ?></td>
 				</tr>
 			<?php endforeach; ?>
 			<?php else: ?>

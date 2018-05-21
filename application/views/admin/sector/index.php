@@ -12,9 +12,9 @@
 		<tbody>
 			<?php if (count($sectors)): foreach ($sectors as $sector): ?>
 				<tr>
-					<td><?php echo anchor('admin/sector/edit/' . $sector->id, $sector->name); ?></td>
-					<td><?php echo btn_edit('admin/sector/edit/' . $sector->id); ?></td>
-					<td><?php echo btn_delete('admin/sector/delete/' . $sector->id); ?></td>
+					<td><?php echo anchor($this->data['langName'] . 'admin/sector/edit/' . $sector->id, $sector->name); ?></td>
+					<td><?php echo btn_edit($this->data['langName'] . 'admin/sector/edit/' . $sector->id); ?></td>
+					<td><?php echo btn_delete($this->data['langName'] . 'admin/sector/delete/' . $sector->id); ?></td>
 				</tr>
 			<?php endforeach; ?>
 			<?php else: ?>

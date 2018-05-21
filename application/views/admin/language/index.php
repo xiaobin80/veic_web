@@ -12,9 +12,9 @@
 		<tbody>
 			<?php if (count($languages)): foreach ($languages as $language): ?>
 				<tr>
-					<td><?php echo anchor('admin/language/edit/' . $language->id, $language->name); ?></td>
-					<td><?php echo btn_edit('admin/language/edit/' . $language->id); ?></td>
-					<td><?php echo btn_delete('admin/language/delete/' . $language->id); ?></td>
+					<td><?php echo anchor($this->data['langName'] . 'admin/language/edit/' . $language->id, $language->name); ?></td>
+					<td><?php echo btn_edit($this->data['langName'] . 'admin/language/edit/' . $language->id); ?></td>
+					<td><?php echo btn_delete($this->data['langName'] . 'admin/language/delete/' . $language->id); ?></td>
 				</tr>
 			<?php endforeach; ?>
 			<?php else: ?>

@@ -16,6 +16,7 @@ class Admin_Controller extends MY_Controller {
 		
 		// Language ID
 		$langName = $this->data['langs'][$this->data['flag_iLang']];
+		$this->data['langName'] = $langName;
 		
 		$langID = $this->_get_langID($langName);
 		$this->data['lang_cond'] = array('lang_id' => $langID);
@@ -45,15 +46,16 @@ class Admin_Controller extends MY_Controller {
 		
 		$this->data['meta_title'] = 'Admin Edit';
 		// Login check
+		/*
 		$exception_uris = array(
-				'admin/user/login', 
-				'admin/user/logout');
+				$langName . '/admin/user/login', 
+				$langName . '/admin/user/logout');
 		if (in_array(uri_string(), $exception_uris) == FALSE) {
 			if ($this->User_M->loggedin() == FALSE) {
-				redirect('admin/user/login');
+				redirect($langName . '/admin/user/login');
 			}
 		}
-		
+		*/
 	}
 	
 	/**
