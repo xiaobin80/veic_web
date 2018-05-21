@@ -1,6 +1,6 @@
 <section>
 	<h2>types</h2>
-	<?php echo anchor('admin/presscenter/types/add', '<span class="glyphicon glyphicon-plus"></span> Add a type'); ?>
+	<?php echo anchor($this->data['langName'] . '/admin/presscenter/types/add', '<span class="glyphicon glyphicon-plus"></span> Add a type'); ?>
 	<table class="table table-striped">
 		<thead>
 			<tr>
@@ -12,9 +12,9 @@
 		<tbody>
 			<?php if (count($types)): foreach ($types as $type): ?>
 				<tr>
-					<td><?php echo anchor($this->data['langName'] . 'admin/presscenter/types/edit/' . $type->id, $type->name); ?></td>
-					<td><?php echo btn_edit($this->data['langName'] . 'admin/presscenter/types/edit/' . $type->id); ?></td>
-					<td><?php echo btn_delete($this->data['langName'] . 'admin/presscenter/types/delete/' . $type->id); ?></td>
+					<td><?php echo anchor($this->data['langName'] . '/admin/presscenter/types/edit/' . $type->id, $type->name); ?></td>
+					<td><?php echo btn_edit($this->data['langName'] . '/admin/presscenter/types/edit/' . $type->id); ?></td>
+					<td><?php echo btn_delete($this->data['langName'] . '/admin/presscenter/types/delete/' . $type->id); ?></td>
 				</tr>
 			<?php endforeach; ?>
 			<?php else: ?>

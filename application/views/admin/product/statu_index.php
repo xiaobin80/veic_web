@@ -1,6 +1,6 @@
 <section>
 	<h2>status</h2>
-	<?php echo anchor('admin/product/status/add', '<span class="glyphicon glyphicon-plus"></span> Add a statu'); ?>
+	<?php echo anchor($this->data['langName'] . '/admin/product/status/add', '<span class="glyphicon glyphicon-plus"></span> Add a statu'); ?>
 	<table class="table table-striped">
 		<thead>
 			<tr>
@@ -12,9 +12,9 @@
 		<tbody>
 			<?php if (count($status)): foreach ($status as $statu): ?>
 				<tr>
-					<td><?php echo anchor($this->data['langName'] . 'admin/product/status/edit/' . $statu->id, $statu->name); ?></td>
-					<td><?php echo btn_edit($this->data['langName'] . 'admin/product/status/edit/' . $statu->id); ?></td>
-					<td><?php echo btn_delete($this->data['langName'] . 'admin/product/status/delete/' . $statu->id); ?></td>
+					<td><?php echo anchor($this->data['langName'] . '/admin/product/status/edit/' . $statu->id, $statu->name); ?></td>
+					<td><?php echo btn_edit($this->data['langName'] . '/admin/product/status/edit/' . $statu->id); ?></td>
+					<td><?php echo btn_delete($this->data['langName'] . '/admin/product/status/delete/' . $statu->id); ?></td>
 				</tr>
 			<?php endforeach; ?>
 			<?php else: ?>

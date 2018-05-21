@@ -1,6 +1,6 @@
 <section>
 	<h2>Sectors</h2>
-	<?php echo anchor('admin/sector/edit', '<span class="glyphicon glyphicon-plus"></span> Add a sector'); ?>
+	<?php echo anchor($this->data['langName'] . '/admin/sector/edit', '<span class="glyphicon glyphicon-plus"></span> Add a sector'); ?>
 	<table class="table table-striped">
 		<thead>
 			<tr>
@@ -12,9 +12,9 @@
 		<tbody>
 			<?php if (count($sectors)): foreach ($sectors as $sector): ?>
 				<tr>
-					<td><?php echo anchor($this->data['langName'] . 'admin/sector/edit/' . $sector->id, $sector->name); ?></td>
-					<td><?php echo btn_edit($this->data['langName'] . 'admin/sector/edit/' . $sector->id); ?></td>
-					<td><?php echo btn_delete($this->data['langName'] . 'admin/sector/delete/' . $sector->id); ?></td>
+					<td><?php echo anchor($this->data['langName'] . '/admin/sector/edit/' . $sector->id, $sector->name); ?></td>
+					<td><?php echo btn_edit($this->data['langName'] . '/admin/sector/edit/' . $sector->id); ?></td>
+					<td><?php echo btn_delete($this->data['langName'] . '/admin/sector/delete/' . $sector->id); ?></td>
 				</tr>
 			<?php endforeach; ?>
 			<?php else: ?>

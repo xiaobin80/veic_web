@@ -1,6 +1,6 @@
 <section>
 	<h2>Users</h2>
-	<?php echo anchor('admin/user/edit', '<span class="glyphicon glyphicon-plus"></span> Add a user'); ?>
+	<?php echo anchor($this->data['langName'] . '/admin/user/edit', '<span class="glyphicon glyphicon-plus"></span> Add a user'); ?>
 	<table class="table table-striped">
 		<thead>
 			<tr>
