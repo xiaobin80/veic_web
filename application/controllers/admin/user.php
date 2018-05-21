@@ -86,7 +86,7 @@ class User extends Admin_Controller {
 			if ($user_new) $data_form['created'] = date('Y-m-d H:i:s');
 			// Save DB table
 			$this->User_M->save($data_form, $id); 
-			redirect($this->data['langName'] . 'admin/user');
+			redirect($this->data['langName'] . '/admin/user');
 		}
 		
 		$this->data['subview'] = 'admin/user/edit';
@@ -95,7 +95,7 @@ class User extends Admin_Controller {
 	
 	public function delete($id) {
 		$this->User_M->delete($id);
-		redirect($this->data['langName'] . 'admin/user');
+		redirect($this->data['langName'] . '/admin/user');
 	}
 	
 }

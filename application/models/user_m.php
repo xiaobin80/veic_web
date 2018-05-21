@@ -37,7 +37,7 @@ class User_M extends MY_Model {
 			'email' => array(
 					'field' => 'email',
 					'label' => 'Email',
-					'rules' => 'trim|required|valid_email|callback__unique_mail|xss_clean'
+					'rules' => 'trim|required|valid_email|xss_clean'
 			),
 			'password' => array(
 					'field' => 'password',
