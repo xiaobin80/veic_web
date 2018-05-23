@@ -45,7 +45,7 @@
 | the active record class
 */
 
-$active_group = 'default';
+$active_group = 'pdo';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
@@ -64,6 +64,21 @@ $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = TRUE;
 
+$db['pdo']['hostname'] = 'mysql:host=localhost';
+$db['pdo']['username'] = 'tdtc2014';
+$db['pdo']['password'] = 'qazxsw';
+$db['pdo']['database'] = 'carnumber';
+$db['pdo']['dbdriver'] = 'pdo';
+$db['pdo']['dbprefix'] = '';
+$db['pdo']['pconnect'] = FALSE;
+$db['pdo']['db_debug'] = FALSE;
+$db['pdo']['cache_on'] = FALSE;
+$db['pdo']['cachedir'] = '';
+$db['pdo']['char_set'] = 'utf8';
+$db['pdo']['dbcollat'] = 'utf8_general_ci';
+$db['pdo']['swap_pre'] = '';
+$db['pdo']['autoinit'] = TRUE;
+$db['pdo']['stricton'] = FALSE;
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */
