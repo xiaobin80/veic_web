@@ -1,6 +1,6 @@
 <section>
 	<h2>parameters</h2>
-	<?php echo anchor('admin/product/parameters/add', '<span class="glyphicon glyphicon-plus"></span> Add a parameter'); ?>
+	<?php echo anchor($this->data['langName'] . '/admin/product/parameters/add', '<span class="glyphicon glyphicon-plus"></span> Add a parameter'); ?>
 	<table class="table table-striped">
 		<thead>
 			<tr>
@@ -17,14 +17,14 @@
 		<tbody>
 			<?php if (count($parameters)): foreach ($parameters as $parameter): ?>
 				<tr>
-					<td><?php echo anchor('admin/product/parameters/edit/' . $parameter->id, $parameter->name); ?></td>
+					<td><?php echo anchor($this->data['langName'] . '/admin/product/parameters/edit/' . $parameter->id, $parameter->name); ?></td>
 					<td><?php echo $parameter->mtbf; ?></td>
 					<td><?php echo $parameter->voltage; ?></td>
 					<td><?php echo $parameter->electricity; ?></td>
 					<td><?php echo $parameter->ipxx; ?></td>
 					<td><?php echo $parameter->temperature; ?></td>
-					<td><?php echo btn_edit('admin/product/parameters/edit/' . $parameter->id); ?></td>
-					<td><?php echo btn_delete('admin/product/parameters/delete/' . $parameter->id); ?></td>
+					<td><?php echo btn_edit($this->data['langName'] . '/admin/product/parameters/edit/' . $parameter->id); ?></td>
+					<td><?php echo btn_delete($this->data['langName'] . '/admin/product/parameters/delete/' . $parameter->id); ?></td>
 				</tr>
 			<?php endforeach; ?>
 			<?php else: ?>

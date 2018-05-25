@@ -1,7 +1,11 @@
 <section>
 	<h3><?php echo empty($navigation->id) ? 'Add a new navigation' : 'Edit navigation ' . $navigation->name; ?></h3>
 	<?php echo validation_errors(); ?>
-	<?php echo form_open(); ?>
+	<?php 
+		$strUri = $this->data['langName'] . '/admin/navigation/edit';
+		dump($strUri);
+		echo form_open($strUri); 
+	?>
 	<?php $inputAttr = 'class="form-control"'; ?>
 	<table class="table">
 		<tr>

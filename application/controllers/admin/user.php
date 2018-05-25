@@ -12,7 +12,7 @@ class User extends Admin_Controller {
 	}
 	
 	public function login() {
-		$dashboard = 'admin/dashboard';
+		$dashboard = $this->data['langName'] . '/admin/dashboard';
 		
 		$this->User_M->loggedin() == FALSE || redirect($dashboard);
 		
@@ -26,7 +26,7 @@ class User extends Admin_Controller {
 			}
 			else {
 				$this->session->set_flashdata('error', 'The email/password combination does not exist');
-				redirect('admin/user/login', 'refresh');
+				redirect($this->data['langName'] . '/admin/user/login', 'refresh');
 			}
 		}
 		
@@ -37,7 +37,7 @@ class User extends Admin_Controller {
 	public function logout() {
 		$this->User_M->logout();
 		
-		redirect('admin/user/login');
+		redirect($this->data['langName'] . '/admin/user/login');
 	}
 	
 	public function _unique_mail($str) {
@@ -86,7 +86,7 @@ class User extends Admin_Controller {
 			if ($user_new) $data_form['created'] = date('Y-m-d H:i:s');
 			// Save DB table
 			$this->User_M->save($data_form, $id); 
-			redirect('admin/user');
+			redirect($this->data['langName'] . '/admin/user');
 		}
 		
 		$this->data['subview'] = 'admin/user/edit';
@@ -95,7 +95,7 @@ class User extends Admin_Controller {
 	
 	public function delete($id) {
 		$this->User_M->delete($id);
-		redirect('admin/user');
+		redirect($this->data['langName'] . '/admin/user');
 	}
 	
 }

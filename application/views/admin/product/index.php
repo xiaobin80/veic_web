@@ -1,6 +1,6 @@
 <section>
 	<h2>products</h2>
-	<?php echo anchor('admin/product/edit', '<span class="glyphicon glyphicon-plus"></span> Add a product'); ?>
+	<?php echo anchor($this->data['langName'] . '/admin/product/edit', '<span class="glyphicon glyphicon-plus"></span> Add a product'); ?>
 	<table class="table table-striped">
 		<thead>
 			<tr>
@@ -12,9 +12,9 @@
 		<tbody>
 			<?php if (count($products)): foreach ($products as $product): ?>
 				<tr>
-					<td><?php echo anchor('admin/product/edit/' . $product->id, $product->name); ?></td>
-					<td><?php echo btn_edit('admin/product/edit/' . $product->id); ?></td>
-					<td><?php echo btn_delete('admin/product/delete/' . $product->id); ?></td>
+					<td><?php echo anchor($this->data['langName'] . '/admin/product/edit/' . $product->id, $product->name); ?></td>
+					<td><?php echo btn_edit($this->data['langName'] . '/admin/product/edit/' . $product->id); ?></td>
+					<td><?php echo btn_delete($this->data['langName'] . '/admin/product/delete/' . $product->id); ?></td>
 				</tr>
 			<?php endforeach; ?>
 			<?php else: ?>

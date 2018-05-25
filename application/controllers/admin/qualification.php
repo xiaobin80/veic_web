@@ -43,7 +43,7 @@ class Qualification extends Admin_Controller {
 			$data_form = $this->Qualification_M->array_form_post($fields);
 			// Save DB table
 			$this->Qualification_M->save($data_form, $id);
-			redirect('admin/qualification');
+			redirect($this->data['langName'] . '/admin/qualification');
 		}
 		
 		$this->data['subview'] = 'admin/qualification/edit';
@@ -53,7 +53,7 @@ class Qualification extends Admin_Controller {
 	public function delete($id) {
 		$this->Qualification_M->delete($id);
 		
-		redirect('admin/qualification');
+		redirect($this->data['langName'] . '/admin/qualification');
 	}
 	
 }

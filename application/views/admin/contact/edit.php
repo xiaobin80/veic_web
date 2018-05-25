@@ -1,7 +1,11 @@
 <section>
 	<h3><?php echo empty($contact->id) ? 'Add a new contact' : 'Edit contact ' . $contact->name; ?></h3>
 	<?php echo validation_errors(); ?>
-	<?php echo form_open(); ?>
+	<?php 
+		$strUri = $this->data['langName'] . '/admin/contact/edit';
+		dump($strUri);
+		echo form_open($strUri); 
+	?>
 	<?php $inputAttr = 'class="form-control"'; ?>
 	<table class="table">
 		<tr>

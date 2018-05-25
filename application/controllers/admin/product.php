@@ -60,7 +60,7 @@ class Product extends Admin_Controller {
 			$data_form = $this->Statu_M->array_form_post($fields);
 			// Save DB table
 			$this->Statu_M->save($data_form, $id);
-			redirect('admin/product/status/list');
+			redirect($this->data['langName'] . '/admin/product/status/list');
 		}
 		
 		$this->data['subview'] = 'admin/product/statu_edit';
@@ -69,7 +69,7 @@ class Product extends Admin_Controller {
 	
 	private function _statu_delete($id) {
 		$this->Statu_M->delete($id);
-		redirect('admin/product/status/list');
+		redirect($this->data['langName'] . '/admin/product/status/list');
 	}
 	
 	public function parameters($param, $id = NULL) {
@@ -128,7 +128,7 @@ class Product extends Admin_Controller {
 			$data_form = $this->Parameter_M->array_form_post($fields);
 			// Save DB table
 			$this->Parameter_M->save($data_form, $id);
-			redirect('admin/product/parameters/list');
+			redirect($this->data['langName'] . '/admin/product/parameters/list');
 		}
 		
 		$this->data['subview'] = 'admin/product/param_edit';
@@ -137,7 +137,7 @@ class Product extends Admin_Controller {
 	
 	private function _parameter_delete($id) {
 		$this->Parameter_M->delete($id);
-		redirect('admin/product/parameters/list');
+		redirect($this->data['langName'] . '/admin/product/parameters/list');
 	}
 	
 	public function index() {
@@ -178,7 +178,7 @@ class Product extends Admin_Controller {
 			$data_form = $this->Product_M->array_form_post($fields);
 			// Save DB table
 			$this->Product_M->save($data_form, $id);
-			redirect('admin/product');
+			redirect($this->data['langName'] . '/admin/product');
 		}
 		
 		$this->data['subview'] = 'admin/product/edit';
@@ -187,7 +187,7 @@ class Product extends Admin_Controller {
 	
 	public function delete($id) {
 		$this->Product_M->delete($id);
-		redirect('admin/product');
+		redirect($this->data['langName'] . '/admin/product');
 	}
 	
 	private function _get_param_list() {
