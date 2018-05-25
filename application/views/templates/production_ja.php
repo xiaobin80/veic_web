@@ -19,7 +19,7 @@
 			<table class="table table-striped" border="0">
 				<tbody>
 					<td>
-						<img src="<?php echo site_url('../html/img/' . $imgName); ?>"></img>
+						<img src="<?php echo site_url('html/img/' . $imgName); ?>"></img>
 					</td>
 					<td>
 						<p><?php echo $productDesc; ?></p>

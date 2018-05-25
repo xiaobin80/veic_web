@@ -42,7 +42,7 @@ if (defined('ENVIRONMENT'))
 		case 'development':
 			error_reporting(E_ALL | E_STRICT);
 		break;
-	
+    
 		case 'testing':
 		case 'production':
 			error_reporting(0);
