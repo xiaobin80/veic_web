@@ -65,7 +65,10 @@ class MY_Model extends CI_Model {
 			//if (!count($this->db->ar_orderby)) {
 			//	$this->db->order_by($this->_order_by, 'asc');
 			//}
-			if(!count($this->db->order_by($this->_order_by))) { 
+			// https://github.com/guzzle/guzzle/pull/2038
+			//if(!count($this->db->order_by($this->_order_by))) {
+			$objCount = $this->db->order_by($this->_order_by);
+			if(!is_array($objCount) && $objCount instanceof Countable) {
 				$this->db->order_by($this->_order_by, 'asc');
 			}
 			$method = 'result';
