@@ -24,7 +24,9 @@ class Article extends Frontend_Controller {
 			
 			$this->data['breadData'] = $navInstr;
 			
-			count($this->data['article']) || $this->data['error'][] = 'article could not be found';
+			//count($this->data['article']) || $this->data['error'][] = 'article could not be found';
+			$objCount = $this->data['article'];
+			(is_array($objCount) && $objCount instanceof Countable) || $this->data['error'][] = 'article could not be found';
 		}
 		else {
 			redirect('errors/error_404');
