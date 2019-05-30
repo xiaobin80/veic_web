@@ -8,10 +8,11 @@ class MY_Controller extends CI_Controller {
 		
 		$this->data['errors'] = '';
 		
-		// zh-cn or en-us
+		// zh-cn or en-us or ja-jp		
 		$this->data['langs'] = array(
-				config_item('lang_zh'),
-				config_item('lang_en')
+			config_item('lang_zh'),
+			config_item('lang_en'),
+			config_item('lang_ja')
 		);
 		
 		$this->data['flag_iLang'] = 0;
@@ -25,6 +26,7 @@ class MY_Controller extends CI_Controller {
 			}
 			$i++;
 		}
+		
 	}
 	
 	/**

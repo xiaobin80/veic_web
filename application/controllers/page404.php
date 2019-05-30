@@ -6,7 +6,7 @@ class Page404 extends Frontend_Controller {
 	}
 	
 	public function index() {
-		echo $_SERVER['HTTP_REFERER']. ' Not found, Please contact the site manager!';
+		echo '"' . $_SERVER['HTTP_REFERER'] . '"' . ' Not found, Please contact the site manager!';
 	}
 	
 }

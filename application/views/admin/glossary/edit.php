@@ -1,7 +1,11 @@
 <section>
 	<h3><?php echo empty($glossary->id) ? 'Add a new glossary' : 'Edit glossary ' . $glossary->name; ?></h3>
 	<?php echo validation_errors(); ?>
-	<?php echo form_open(); ?>
+	<?php 
+		$strUri = $this->data['langName'] . '/admin/glossary/edit';
+		dump($strUri);
+		echo form_open($strUri); 
+	?>
 	<?php $inputAttr = 'class="form-control"'; ?>
 	<table class="table">
 		<tr>

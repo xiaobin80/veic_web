@@ -5,7 +5,11 @@
  * Set time zone
  *---------------------------------------------------------------
  */
+    //America/Los_Angeles
+	//America/Chicago
+	//America/Detroit
     date_default_timezone_set('America/New_York');
+
 
 /*
  *---------------------------------------------------------------

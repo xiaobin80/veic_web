@@ -1,6 +1,6 @@
 <section>
 	<h2>Images</h2>
-	<?php echo anchor('admin/image/edit', '<span class="glyphicon glyphicon-plus"></span> Add a image'); ?>
+	<?php echo anchor($this->data['langName'] . '/admin/image/edit', '<span class="glyphicon glyphicon-plus"></span> Add a image'); ?>
 	<table class="table table-striped">
 		<thead>
 			<tr>
@@ -12,9 +12,9 @@
 		<tbody>
 			<?php if (count($images)): foreach ($images as $image): ?>
 				<tr>
-					<td><?php echo anchor('admin/image/edit/' . $image->id, $image->name); ?></td>
-					<td><?php echo btn_edit('admin/image/edit/' . $image->id); ?></td>
-					<td><?php echo btn_delete('admin/image/delete/' . $image->id); ?></td>
+					<td><?php echo anchor($this->data['langName'] . '/admin/image/edit/' . $image->id, $image->name); ?></td>
+					<td><?php echo btn_edit($this->data['langName'] . '/admin/image/edit/' . $image->id); ?></td>
+					<td><?php echo btn_delete($this->data['langName'] . '/admin/image/delete/' . $image->id); ?></td>
 				</tr>
 			<?php endforeach; ?>
 			<?php else: ?>

@@ -39,7 +39,7 @@ class Navigation extends Admin_Controller {
 			$data_form = $this->Navigation_M->array_form_post($fields);
 			// Save DB table
 			$this->Navigation_M->save($data_form, $id);
-			redirect('admin/navigation');
+			redirect($this->data['langName'] . '/admin/navigation');
 		}
 		
 		$this->data['subview'] = 'admin/navigation/edit';
@@ -48,7 +48,7 @@ class Navigation extends Admin_Controller {
 	
 	public function delete($id) {
 		$this->Navigation_M->delete($id);
-		redirect('admin/navigation');
+		redirect($this->data['langName'] . '/admin/navigation');
 	}
 	
 	public function order() {

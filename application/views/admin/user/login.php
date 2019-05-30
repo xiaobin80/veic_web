@@ -4,7 +4,10 @@
 </div>
 <div class="modal-body">
 	<?php echo validation_errors(); ?>
-	<?php echo form_open(); ?>
+		<?php 
+		$strUri = $this->data['langName'] . '/admin/user/login';
+		echo form_open($strUri); 
+		?>
 	<?php $inputAttr = 'class="form-control" placeholder="'; ?>
 	<table class="table">
 		<tr>

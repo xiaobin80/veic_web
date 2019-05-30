@@ -7,7 +7,7 @@
 
 <script>
 	$(document).ready(function() {
-		$url = '<?php echo site_url('admin/navigation/order_ajax'); ?>';
+		$url = '<?php echo site_url($this->data['langName'] . '/admin/navigation/order_ajax'); ?>';
 		
 		$.post($url, {}, 
 			function(data) {

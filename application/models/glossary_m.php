@@ -39,10 +39,15 @@ class Glossary_M extends MY_Model {
 	 * @return string
 	 */
 	public function get_word($enName, $langID) {
+	    $ret = '';
 		$where = array('name' => $enName, 'lang_id' => $langID);
 		$row = $this->Glossary_M->get_by($where, TRUE);
+		if (empty($row)) 
+		    $ret = $enName;
+		else 
+		    $ret = $row->description;
 		//echo '<pre>' . $this->db->last_query() . '</pre>';
-		return $row->description;
+		return $ret;
 	}
 }
 

@@ -19,12 +19,14 @@
 					var strPrefixHref = "";
 					var len1 = 0;
 					var len2 = 0;
+					var len3 = 0;
 					var strHref = "";
 					len1 = pathname.indexOf("zh-cn");
 					len2 = pathname.indexOf("en-us");
+					len3 = pathname.indexOf("ja-jp");
 					
-					if (len1 > 0 || len2 > 0)
-						strPrefixHref = pathname.substring(1, len1 + len2 + 6);
+					if (len1 > 0 || len2 > 0 || len3 > 0)
+						strPrefixHref = pathname.substring(1, len1 + len2 + len3 + 7);
 
 					strHref = 
 						"http://" + host  + "/" +

@@ -5,18 +5,18 @@
   	<meta http-equiv="Content-Type" content="text/html; charset=utf-8 /"> 
     <meta http-equiv="X-UA-Compatible" name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Bootstrap -->
-    <link href="<?php echo site_url('../html/css/bootstrap.min.css'); ?>" rel="stylesheet" media="screen">
-    <link href="<?php echo site_url('../html/css/admin.css'); ?>" rel="stylesheet" >
-    <script src="<?php echo site_url('../html/js/jquery-1.10.2.js'); ?>"></script>
-    <script src="<?php echo site_url('../html/js/bootstrap.min.js'); ?>"></script>
+    <link href="<?php echo site_url('html/css/bootstrap.min.css'); ?>" rel="stylesheet" media="screen">
+    <link href="<?php echo site_url('html/css/admin.css'); ?>" rel="stylesheet" >
+    <script src="<?php echo site_url('html/js/jquery-1.11.3.js'); ?>"></script>
+    <script src="<?php echo site_url('html/js/bootstrap.min.js'); ?>"></script>
     <?php if (isset($sortable) && $sortable == TRUE): ?>
-	    <script type="text/javascript" src="<?php echo site_url('../html/js/jquery-ui-1.10.3.custom.min.js'); ?>"></script>
-	    <script type="text/javascript" src="<?php echo site_url('../html/js/jquery.mjs.nestedSortable.js'); ?>"></script>
+	    <script type="text/javascript" src="<?php echo site_url('html/js/jquery-ui.min.js'); ?>"></script>
+	    <script type="text/javascript" src="<?php echo site_url('html/js/jquery.mjs.nestedSortable.js'); ?>"></script>
     <?php endif; ?>
     
     <?php if (isset($mceFlag) && $mceFlag == TRUE): ?>
 	    <!-- TinyMCE -->
-		<script src="<?php echo site_url('../html/js/tinymce/tinymce.min.js'); ?>"></script>
+		<script src="<?php echo site_url('html/js/tinymce/tinymce.min.js'); ?>"></script>
 		<script type="text/javascript">
 			tinymce.init({
 			    selector: "textarea",
@@ -42,7 +42,7 @@
 		<!-- /TinyMCE -->
 	<?php endif; ?>
 	
-	<link href="<?php echo site_url('../html/css/datepicker.css'); ?>" rel="stylesheet" />
-	<script src="<?php echo site_url('../html/js/bootstrap-datepicker.js'); ?>"></script>
+	<link href="<?php echo site_url('html/css/datepicker.css'); ?>" rel="stylesheet" />
+	<script src="<?php echo site_url('html/js/bootstrap-datepicker.js'); ?>"></script>
 	
   </head>
