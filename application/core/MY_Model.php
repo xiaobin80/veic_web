@@ -86,7 +86,9 @@ class MY_Model extends CI_Model {
 	 * @param boolean $single
 	 */
 	public function get_by($where, $single = FALSE) {
-		$this->db->where($where);
+		if ($where != '')
+		    $this->db->where($where);
+		
 		return $this->get(NULL, $single);
 	}
 	
