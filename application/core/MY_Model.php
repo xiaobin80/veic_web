@@ -61,7 +61,14 @@ class MY_Model extends CI_Model {
 			$method = 'row';
 		}
 		else {
-			if (!count($this->db->ar_orderby)) {
+			// https://github.com/bcit-ci/CodeIgniter/issues/3492
+			//if (!count($this->db->ar_orderby)) {
+			//	$this->db->order_by($this->_order_by, 'asc');
+			//}
+			// https://github.com/guzzle/guzzle/pull/2038
+			//if(!count($this->db->order_by($this->_order_by))) {
+			$objCount = $this->db->order_by($this->_order_by);
+			if(!is_array($objCount) && $objCount instanceof Countable) {
 				$this->db->order_by($this->_order_by, 'asc');
 			}
 			$method = 'result';
@@ -79,7 +86,9 @@ class MY_Model extends CI_Model {
 	 * @param boolean $single
 	 */
 	public function get_by($where, $single = FALSE) {
-		$this->db->where($where);
+		if ($where != '')
+		    $this->db->where($where);
+		
 		return $this->get(NULL, $single);
 	}
 	
@@ -101,9 +110,13 @@ class MY_Model extends CI_Model {
     		$result = $this->_myQuery_i($sqlCond, $resultCol, $conn);
 	    }
 	    else {
-    		$conn = $this->_conn();
-    		$result = $this->_myQuery($sqlCond, $resultCol, $conn);
-    	    //$this->_closeConn($conn);
+	    	$strHost = "127.0.0.1";
+	    	$strPort = "3306";
+	    	$strDbname = "carnumber";
+	    	// "mysql:host=127.0.0.1;port=3306;dbname=carnumber;";
+	    	$dsn = "mysql:"."host=".$strHost.";"."port=".$strPort.";"."dbname=".$strDbname.";";
+	    	$conn = $this->_conn_pdo($dsn, "tdtc2014", "qazxsw");
+	    	$result = $this->_myQuery_pdo($sqlCond, $resultCol, $conn);
 	    }
 		return $result;
 	}
@@ -218,37 +231,44 @@ class MY_Model extends CI_Model {
 	}
 	
 	/**
-	 * <h4> Original MySQL API <h4>
-	 * <p> http://php.net/manual/en/book.mysql.php <p>
+	 * <h4> PHP Data Objects <h4>
+	 * <p> http://php.net/manual/en/book.pdo.php <p>
 	 * 
 	 * <table border="1">
-     *   <tr>
-     *     <th>sn</th>
-     *     <th>function name</th>
-     *     <th>memo</th>
-     *   </tr>
-     *   <tr>
+	 *   <tr>
+	 *     <th>sn</th>
+	 *     <th>function name</th>
+	 *     <th>memo</th>
+	 *   </tr>
+	 *   <tr>
      *     <td>1</td>
-     *     <td>mysql_connect</td>
+     *     <td>PDO</td>
      *     <td>connect</td>
      *   </tr>
-     *   
-     * </table>
-     * 
-     * @link http://php.net/manual/en/function.mysql-connect.php mysql_connect
+	 *   
+	 * </table>
+	 * 
+	 * @link http://php.net/manual/en/ref.pdo-mysql.connection.php PDO_MYSQL DSN
 	 */
-	private function _conn() {
-		//$con = mysql_pconnect("localhost","tdtc2014","qazxsw");
-		$conn = mysql_connect("localhost","tdtc2014","qazxsw");
-		if (!$conn)
-			die('Could not connect: ' . mysql_error());
-		return $conn;
+    private function _conn_pdo($dsn, $usr, $pwd) {
+		PDO : $result;
+		$options = array(
+				PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8', 
+		);
+		try {
+			$result = new PDO($dsn, $usr, $pwd, $options);
+		}
+		catch(PDOException $e) {
+			throw new PDOException("Error  : " . $e->getMessage());
+		}
+
+		return $result;
 	}
 	
-	/**
-	 * <h4> Original MySQL API <h4>
-	 * <p> http://php.net/manual/en/book.mysql.php <p>
-	 *
+	/** 
+	 * <h4> PHP Data Objects <h4>
+	 * <p> http://php.net/manual/en/book.pdo.php <p>
+	 * 
 	 * <table border="1">
 	 *   <tr>
 	 *     <th>sn</th>
@@ -257,59 +277,45 @@ class MY_Model extends CI_Model {
 	 *   </tr>
 	 *   <tr>
 	 *     <td>1</td>
-	 *     <td>mysql_close</td>
-	 *     <td>close connect</td>
-	 *   </tr>
-	 *
-	 * </table>
-	 *
-	 * @link http://php.net/manual/en/function.mysql-close.php mysql_close
-	 */	
-	private function _closeConn($conn) {
-		mysql_close($conn);
-	}
-
-	/**
-	 * <h4> Original MySQL API <h4>
-	 * <p> http://php.net/manual/en/book.mysql.php <p>
-	 *
-	 * <table border="1">
-	 *   <tr>
-	 *     <th>sn</th>
-	 *     <th>function name</th>
-	 *     <th>memo</th>
-	 *   </tr>
-	 *   <tr>
-	 *     <td>1</td>
-	 *     <td>mysql_select_db</td>
-	 *     <td>choice Database</td>
+	 *     <td>prepare</td>
+	 *     <td>Prepares a statement for execution and returns a statement object</td>
 	 *   </tr>
 	 *   <tr>
 	 *     <td>2</td>
-	 *     <td>mysql_query</td>
-	 *     <td>SQL query</td>
+	 *     <td>bindColumn</td>
+	 *     <td>Bind a column to a PHP variable</td>
 	 *   </tr>
 	 *   <tr>
 	 *     <td>3</td>
-	 *     <td>mysql_result</td>
-	 *     <td>result array</td>
+	 *     <td>execute</td>
+	 *     <td>Executes a prepared statement</td>
 	 *   </tr>
-	 *
+	 *   <tr>
+	 *     <td>4</td>
+	 *     <td>fetch</td>
+	 *     <td>Fetches the next row from a result set</td>
+	 *   </tr>
+	 *   
 	 * </table>
-	 *
-	 * @link http://php.net/manual/en/function.mysql-select-db.php mysql_select_db
-	 * @link http://php.net/manual/en/function.mysql-query.php mysql_query
-	 * @link http://php.net/manual/en/function.mysql-result.php mysql_result
+	 * 
+	 * @link http://php.net/manual/en/pdo.prepare.php prepare
+	 * @link http://php.net/manual/en/pdostatement.bindcolumn.php bindColumn
+	 * @link http://php.net/manual/en/pdostatement.execute.php execute
+	 * @link http://php.net/manual/en/pdostatement.fetch.php fetch 
 	 */
-	private function _myQuery($sql, $resultCol, $conn) {
+	private function _myQuery_pdo($sql, $resultCol, $conn) {
+		$result = "";
 		if (!$conn)
-			die('Could not connect: ' . mysql_error());
-	
-		$db_selected = mysql_select_db("carnumber", $conn);
-		$result = mysql_query($sql, $conn);
-		return  mysql_result($result, 0, $resultCol);
-		//print_r(mysql_fetch_row($result));
+			die('Could not connect: ' . $conn->errorInfo());
+			$stmt = $conn->prepare($sql);
+			$stmt->execute();
+			$stmt->bindColumn($resultCol, $results);
+			while ($stmt->fetch(PDO::FETCH_BOUND)) {
+				$result = $results;
+			}
+			return $result;
 	}
+	
 	
 	/**
 	 * <h4> MySQL Improved Extension <h4>

@@ -36,7 +36,11 @@ class MY_Controller extends CI_Controller {
 	 * @return string Languages's ID
 	 */
 	protected function _get_langID($langName) {
-		$sqlCond = 'name = "' . $langName . '"';
+		//$sqlCond = 'name = "' . $langName . '"';
+		$sqlCond = '';
+		$langName1 = "'" . $langName . "'";
+		$this->db->where('name', $langName1, false);
+		
 		return $this->Language_M->get_by($sqlCond, TRUE)->id;
 	}
 }
