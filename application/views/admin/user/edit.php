@@ -2,7 +2,11 @@
 	<h3><?php echo empty($user->id) ? 'Add a new user' : 'Edit user ' . $user->name; ?></h3>
 	<?php echo validation_errors(); ?>
 	<?php 
-		$strUri = $this->data['langName'] . '/admin/user/edit';
+		if(empty($user->id))
+			$strUri = $this->data['langName'] . '/admin/user/edit';
+		else
+			$strUri = $this->data['langName'] . '/admin/user/edit' . '/' . $user->id;
+		
 		echo form_open($strUri); 
 	?>
 	<?php $inputAttr = 'class="form-control"'; ?>
