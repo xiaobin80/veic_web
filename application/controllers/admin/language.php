@@ -38,7 +38,7 @@ class Language extends Admin_Controller {
 			$data_form = $this->Language_M->array_form_post($fields);
 			// Save DB table
 			$this->Language_M->save($data_form, $id);
-			redirect('admin/language');
+			redirect($this->data['langName'] . '/' . 'admin/language', 'refresh'));
 		}
 		
 		$this->data['subview'] = 'admin/language/edit';
@@ -47,7 +47,7 @@ class Language extends Admin_Controller {
 	
 	public function delete($id) {
 		$this->Language_M->delete($id);
-		redirect('admin/language');
+		redirect($this->data['langName'] . '/' . 'admin/language', 'refresh'));
 	}
 }
 

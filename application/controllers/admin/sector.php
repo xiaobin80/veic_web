@@ -36,7 +36,7 @@ class Sector extends Admin_Controller {
 			$data_form = $this->Sector_M->array_form_post($fields);
 			// Save DB table
 			$this->Sector_M->save($data_form, $id);
-			redirect('admin/sector');
+			redirect($this->data['langName'] . '/' . 'admin/sector', 'refresh');
 		}
 	
 		$this->data['subview'] = 'admin/sector/edit';
@@ -45,7 +45,7 @@ class Sector extends Admin_Controller {
 	
 	public function delete($id) {
 		$this->sector_M->delete($id);
-		redirect('admin/sector');
+		redirect($this->data['langName'] . '/' . 'admin/sector', 'refresh');
 	}
 	
 }

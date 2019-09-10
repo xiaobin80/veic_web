@@ -1,7 +1,14 @@
 <section>
 	<h3><?php echo empty($statu->id) ? 'Add a new statu' : 'Edit statu ' . $statu->name; ?></h3>
 	<?php echo validation_errors(); ?>
-	<?php echo form_open(); ?>
+	<?php 
+		if(empty($statu->id))
+			$strUri = $this->data['langName'] . '/admin/status/edit';
+		else
+			$strUri = $this->data['langName'] . '/admin/status/edit' . '/' . $statu->id;
+		
+		echo form_open($strUri); 
+	?>
 	<?php $inputAttr = 'class="form-control"'; ?>
 	<table class="table">
 		<tr>

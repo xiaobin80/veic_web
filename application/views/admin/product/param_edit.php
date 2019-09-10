@@ -1,7 +1,14 @@
 <section>
 	<h3><?php echo empty($parameter->id) ? 'Add a new parameter' : 'Edit parameter'; ?></h3>
 	<?php echo validation_errors(); ?>
-	<?php echo form_open(); ?>
+	<?php 
+		if(empty($parameter->id))
+			$strUri = $this->data['langName'] . '/admin/parameters/edit';
+		else
+			$strUri = $this->data['langName'] . '/admin/parameters/edit' . '/' . $parameter->id;
+		
+		echo form_open($strUri); 
+	?>
 	<?php $inputAttr = 'class="form-control"'; ?>
 	<table class="table">
 		<tr>

@@ -1,7 +1,14 @@
 <section>
 	<h3><?php echo empty($qualification->id) ? 'Add a new Qualification' : 'Edit qualification ' . $qualification->name; ?></h3>
 	<?php echo validation_errors(); ?>
-	<?php echo form_open(); ?>
+	<?php 
+		if(empty($qualification->id))
+			$strUri = $this->data['langName'] . '/admin/qualification/edit';
+		else
+			$strUri = $this->data['langName'] . '/admin/qualification/edit' . '/' . $qualification->id;
+		
+		echo form_open($strUri); 
+	?>
 	<?php $inputAttr = 'class="form-control"'; ?>
 	<table class="table">
 		<tr>

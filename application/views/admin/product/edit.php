@@ -1,7 +1,14 @@
 <section>
 	<h3><?php echo empty($product->id) ? 'Add a new product' : 'Edit product ' . $product->name; ?></h3>
 	<?php echo validation_errors(); ?>
-	<?php echo form_open(); ?>
+	<?php 
+		if(empty($product->id))
+			$strUri = $this->data['langName'] . '/admin/product/edit';
+		else
+			$strUri = $this->data['langName'] . '/admin/product/edit' . '/' . $product->id;
+		
+		echo form_open($strUri); 
+	?>
 	<?php $inputAttr = 'class="form-control"'; ?>
 	<table class="table">
 		<tr>

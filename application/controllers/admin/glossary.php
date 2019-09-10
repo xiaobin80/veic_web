@@ -38,7 +38,7 @@ class Glossary extends Admin_Controller {
 			$data_form = $this->Glossary_M->array_form_post($fields);
 			// Save DB table
 			$this->Glossary_M->save($data_form, $id);
-			redirect('admin/glossary');
+			redirect($this->data['langName'] . '/' . 'admin/glossary', 'refresh');
 		}
 	
 		$this->data['subview'] = 'admin/glossary/edit';
@@ -47,7 +47,7 @@ class Glossary extends Admin_Controller {
 	
 	public function delete($id) {
 		$this->Glossary_M->delete($id);
-		redirect('admin/glossary');
+		redirect($this->data['langName'] . '/' . 'admin/glossary', 'refresh');
 	}
 	
 }

@@ -1,7 +1,14 @@
 <section>
 	<h3><?php echo empty($language->id) ? 'Add a new language' : 'Edit language ' . $language->name; ?></h3>
 	<?php echo validation_errors(); ?>
-	<?php echo form_open(); ?>
+	<?php 
+		if(empty($language->id))
+			$strUri = $this->data['langName'] . '/admin/language/edit';
+		else
+			$strUri = $this->data['langName'] . '/admin/language/edit' . '/' . $language->id;
+		
+		echo form_open($strUri); 
+	?>
 	<?php $inputAttr = 'class="form-control"'; ?>
 	<table class="table">
 		<tr>

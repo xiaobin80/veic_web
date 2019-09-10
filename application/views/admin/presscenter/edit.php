@@ -1,7 +1,14 @@
 <section>
 	<h3><?php echo empty($article->id) ? 'Add a new article' : 'Edit article ' . $article->title; ?></h3>
 	<?php echo validation_errors(); ?>
-	<?php echo form_open(); ?>
+	<?php 
+		if(empty($article->id))
+			$strUri = $this->data['langName'] . '/admin/presscenter/edit';
+		else
+			$strUri = $this->data['langName'] . '/admin/presscenter/edit' . '/' . $article->id;
+		
+		echo form_open($strUri); 
+	?>
 	<?php $inputAttr = 'class="form-control"'; ?>
 	<table class="table">
 		<tr>

@@ -40,7 +40,7 @@ class Contact extends Admin_Controller {
 			$data_form = $this->Contact_M->array_form_post($fields);
 			// Save DB table
 			$this->Contact_M->save($data_form, $id);
-			redirect('admin/contact');
+			redirect($this->data['langName'] . '/' . 'admin/contact', 'refresh');
 		}
 		
 		$this->data['subview'] = 'admin/contact/edit';
@@ -49,7 +49,7 @@ class Contact extends Admin_Controller {
 	
 	public function delete($id) {
 		$this->Contact_M->delete($id);
-		redirect('admin/contact');
+		redirect($this->data['langName'] . '/' . 'admin/contact', 'refresh');
 	}
 }
 

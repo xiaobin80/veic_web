@@ -1,7 +1,14 @@
 <section>
 	<h3><?php echo empty($sector->id) ? 'Add a new sector' : 'Edit sector ' . $sector->name; ?></h3>
 	<?php echo validation_errors(); ?>
-	<?php echo form_open(); ?>
+	<?php 
+		if(empty($sector->id))
+			$strUri = $this->data['langName'] . '/admin/sector/edit';
+		else
+			$strUri = $this->data['langName'] . '/admin/sector/edit' . '/' . $sector->id;
+		
+		echo form_open($strUri); 
+	?>
 	<?php $inputAttr = 'class="form-control"'; ?>
 	<table class="table">
 		<tr>

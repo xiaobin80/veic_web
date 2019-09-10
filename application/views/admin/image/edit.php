@@ -1,7 +1,14 @@
 <section>
 	<h3><?php echo empty($image->id) ? 'Add a new image' : 'Edit image ' . $image->name; ?></h3>
 	<?php echo validation_errors(); ?>
-	<?php echo form_open(); ?>
+	<?php 
+		if(empty($image->id))
+			$strUri = $this->data['langName'] . '/admin/image/edit';
+		else
+			$strUri = $this->data['langName'] . '/admin/image/edit' . '/' . $image->id;
+		
+		echo form_open($strUri); 
+	?>
 	<?php $inputAttr = 'class="form-control"'; ?>
 	<table class="table">
 		<tr>

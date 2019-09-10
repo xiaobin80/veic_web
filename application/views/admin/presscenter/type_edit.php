@@ -1,7 +1,14 @@
 <section>
 	<h3><?php echo empty($type->id) ? 'Add a new type' : 'Edit type ' . $type->name; ?></h3>
 	<?php echo validation_errors(); ?>
-	<?php echo form_open(); ?>
+	<?php 
+		if(empty($type->id))
+			$strUri = $this->data['langName'] . '/admin/presscenter/types/edit';
+		else
+			$strUri = $this->data['langName'] . '/admin/presscenter/types/edit' . '/' . $type->id;
+		
+		echo form_open($strUri); 
+	?>
 	<?php $inputAttr = 'class="form-control"'; ?>
 	<table class="table">
 		<tr>

@@ -36,7 +36,7 @@ class Image extends Admin_Controller {
 			$data_form = $this->Image_M->array_form_post($fields);
 			// Save DB table
 			$this->Image_M->save($data_form, $id);
-			redirect('admin/image');
+			redirect($this->data['langName'] . '/' . 'admin/image', 'refresh');
 		}
 	
 		$this->data['subview'] = 'admin/image/edit';
@@ -45,7 +45,7 @@ class Image extends Admin_Controller {
 	
 	public function delete($id) {
 		$this->Image_M->delete($id);
-		redirect('admin/image');
+		redirect($this->data['langName'] . '/' . 'admin/image', 'refresh');
 	}
 	
 }

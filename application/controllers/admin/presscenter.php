@@ -62,7 +62,7 @@ class PressCenter extends Admin_Controller {
 			$data_form = $this->Type_M->array_form_post($fields);
 			// Save DB table
 			$this->Type_M->save($data_form, $id);
-			redirect('admin/presscenter/types/list');
+			redirect($this->data['langName'] . '/' . 'admin/presscenter/types/list', 'refresh');
 		}
 		
 		$this->data['subview'] = 'admin/presscenter/type_edit';
@@ -72,7 +72,7 @@ class PressCenter extends Admin_Controller {
 	
 	private function _type_delete($id) {
 		$this->Type_M->delete($id);
-		redirect('admin/presscenter/types/list');
+		redirect($this->data['langName'] . '/' . 'admin/presscenter/types/list', 'refresh');
 	}
 	
 	public function index() {
@@ -113,7 +113,7 @@ class PressCenter extends Admin_Controller {
 			$data_form = $this->Article_M->array_form_post($fields);
 			// Save DB table
 			$this->Article_M->save($data_form, $id);
-			redirect('admin/presscenter');
+			redirect($this->data['langName'] . '/' . 'admin/presscenter', 'refresh');
 		}
 		
 		$this->data['subview'] = 'admin/presscenter/edit';
@@ -122,7 +122,7 @@ class PressCenter extends Admin_Controller {
 	
 	public function delete($id) {
 		$this->Article_M->delete($id);
-		redirect('admin/presscenter');
+		redirect($this->data['langName'] . '/' . 'admin/presscenter', 'refresh');
 	}
 }
 
