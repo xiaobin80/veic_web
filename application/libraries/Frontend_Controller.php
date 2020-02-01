@@ -48,7 +48,8 @@ class Frontend_Controller extends MY_Controller {
 	private function _get_pagination($counts, $perpage, $iSegUri = 4) {
 		$result = '';
 
-		$strUrl = '';
+		// Add language name url segment
+		$strUrl = $this->data['langName'] . '/' ;
 		for ($i = 1; $i < $iSegUri; $i++)
 		    $strUrl .= $this->uri->rsegment($i) . '/';
 		
