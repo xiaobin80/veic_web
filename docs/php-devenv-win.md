@@ -53,6 +53,7 @@ AllowOverride All
 
 # 配置PHP(php.ini)
 OPcache为php5.5+内置.
+关于v7.2~v7.4,参见[mcrypt库](#mcrypt)
 ## extension设置
 目录位置:
 ```bash
@@ -180,6 +181,25 @@ A: 关闭其他占用443端口的软件。
 2) 共享虚拟机        
 i. 更改配置->禁用共享        
 ii. 在“HTTPS”后面输入433，启用共享
+
+
+<h1 id="mcrypt">mcrypt</h1>
+
+## [down](https://pecl.php.net/package/mcrypt/1.0.3/windows)
+|Php|mcrypt|
+|-|-|
+|7.4|[x64](https://windows.php.net/downloads/pecl/releases/mcrypt/1.0.3/php_mcrypt-1.0.3-7.4-ts-vc15-x64.zip)|
+|7.3|[x64](https://windows.php.net/downloads/pecl/releases/mcrypt/1.0.3/php_mcrypt-1.0.3-7.3-ts-vc15-x64.zip)|
+|7.2|[x64](https://windows.php.net/downloads/pecl/releases/mcrypt/1.0.3/php_mcrypt-1.0.3-7.2-ts-vc15-x64.zip)|
+
+把php_mcrypt.dll拷贝到"ext"中.
+
+## 配置
+在Dynamic Extensions最上边添加如下:
+```bash
+extension=php_mcrypt.dll
+```
+
 
 # Reference
 - [Apache install](http://httpd.apache.org/docs/2.4/platform/windows.html)
