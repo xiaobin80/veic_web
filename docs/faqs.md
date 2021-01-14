@@ -34,3 +34,18 @@ return $_config[0];
 ```bash
 ;extension=php_mysql.dll
 ```
+
+# 2. mcrypt
+> php7.2~php7.4
+
+使用 错误抑制符 停止提示。
+修改Encrypt.php（.\system\libraries\）
+- Ln291
+```php
+$init_size = @mcrypt_get_iv_size($this->_get_cipher(), $this->_get_mode());
+```
+- 
+- Ln300
+```php
+return rtrim(@mcrypt_decrypt($this->_get_cipher(), $key, $data, $this->_get_mode(), $init_vect), "\0");
+```
