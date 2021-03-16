@@ -206,3 +206,4 @@ extension=php_mcrypt.dll
 - [Apache Haus](http://www.apachehaus.com/cgi-bin/download.plx)
 - [How to use PHP OPCache?](http://stackoverflow.com/questions/17224798/how-to-use-php-opcache)
 - [OpCache文档](http://php.net/manual/zh/opcache.configuration.php)
+- [微软停止支持PHP8](https://news-web.php.net/php.internals/110907)
