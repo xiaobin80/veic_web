@@ -1,13 +1,12 @@
 ---
 title: "Windows搭建PHP环境"
-date: 2020-10-18T10:08:08+08:00
+date: 2021-03-18T10:08:08+08:00
 ---
   关于Php:
 - Non Thread Safe和“Thread Safe：    
 使用Apache时，用“TS”，否则没有“php5apache2_4.dll”。    
 - VC Redist    
-V7.1: [VS16部署包](https://aka.ms/vs/16/release/VC_redist.x64.exe)    
-V5.6: [VS2012 update 4](https://www.microsoft.com/zh-cn/download/details.aspx?id=30679)
+V7.1/V7.4: [VS16部署包](https://aka.ms/vs/16/release/VC_redist.x64.exe)    
 
 # Apache配置
 - 路径
@@ -25,8 +24,8 @@ V5.6: [VS2012 update 4](https://www.microsoft.com/zh-cn/download/details.aspx?id
 - PHPV7.1:
 ```bash
 #BEGIN PHP INSTALLER EDITS - REMOVE ONLY ON UNINSTALL
-PHPIniDir "D:/AppServ/php7.1"
-LoadModule php7_module "D:/AppServ/php7.1/php7apache2_4.dll"
+PHPIniDir "D:/progFiles/php-7.1"
+LoadModule php7_module "D:/progFiles/php-7.1/php7apache2_4.dll"
 # php httpd
 AddType application/x-httpd-php .php
 #END PHP INSTALLER EDITS - REMOVE ONLY ON UNINSTALL
@@ -34,8 +33,8 @@ AddType application/x-httpd-php .php
 - PHPV5.6:
 ```bash
 #BEGIN PHP INSTALLER EDITS - REMOVE ONLY ON UNINSTALL
-PHPIniDir "D:/AppServ/php5.6"
-LoadModule php5_module "D:/AppServ/php5.6/php5apache2_4.dll"
+PHPIniDir "D:/progFiles/php-7.4"
+LoadModule php7_module "D:/progFiles/php-7.4/php7apache2_4.dll"
 # php httpd
 AddType application/x-httpd-php .php
 #END PHP INSTALLER EDITS - REMOVE ONLY ON UNINSTALL
@@ -57,8 +56,8 @@ OPcache为php5.5+内置.
 ## extension设置
 目录位置:
 ```bash
-extension_dir = "D:/AppServ/php7.1/ext"
-extension_dir = "D:/AppServ/php5.6/ext"
+extension_dir = "D:/progFiles/php-7.1/ext"
+extension_dir = "D:/progFiles/php-7.4/ext"
 ```
 扩展文件：
 ```bash
@@ -98,18 +97,18 @@ set regpath=HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\
 echo register APACHE2_HOME... ...
 
 set envname1=APACHE2_HOME
-set varpath1=D:\AppServ\Apache24
+set varpath1=D:\progFiles\Apache24
 reg add "%regpath%" /v %envname1% /d %varpath1% /f
 
 echo register MYSQL_HOME... ...
 
-set envname2=MYSQL56_HOME
-set varpath2=D:\progFiles\mariadb-10.2-winx64
+set envname2=MYSQL57_HOME
+set varpath2=D:\progFiles\mysql-5.7
 reg add "%regpath%" /v %envname2% /d %varpath2% /f
 
 echo register modify path... ...
-reg add "%regpath%" /v Path /t REG_EXPAND_SZ /d "%path%;%%APACHE2_HOME%%\bin;%%MYSQL56_HOME%%\bin;" /f
-rem wmic ENVIRONMENT where "Name='path' and UserName='<system>'" set VariableValue="%path%;%%APACHE2_HOME%%\bin;%%MYSQL56_HOME%%\bin;"
+reg add "%regpath%" /v Path /t REG_EXPAND_SZ /d "%path%;%%APACHE2_HOME%%\bin;%%MYSQL57_HOME%%\bin;" /f
+rem wmic ENVIRONMENT where "Name='path' and UserName='<system>'" set VariableValue="%path%;%%APACHE2_HOME%%\bin;%%MYSQL57_HOME%%\bin;"
 
 echo register end... ...
 
@@ -123,11 +122,11 @@ net start apache2.4
 
 
 echo Service MYSQLD Reg... ...
-rem %MYSQL56_HOME%\bin\mysqld --install MySQL56 --defaults-file="D:\progFiles\mariadb-10.2-winx64\data\my.ini"
+rem %MYSQL57_HOME%\bin\mysqld --install MySQL57 --defaults-file="D:\progFiles\mysql-5.7\my.ini"
 %MYSQL56_HOME%\bin\mysqld -install MySQL56
 echo ...
-echo Service MYSQLD(mysql55) Start... ...
-net start MySQL56
+echo Service MYSQLD(mysql57) Start... ...
+net start MySQL57
 
 echo Service List End... ...
 
@@ -185,12 +184,12 @@ ii. 在“HTTPS”后面输入433，启用共享
 
 <h1 id="mcrypt">mcrypt</h1>
 
-## [down](https://pecl.php.net/package/mcrypt/1.0.3/windows)
+## [down](https://pecl.php.net/package/mcrypt/1.0.4/windows)
 |Php|mcrypt|
 |-|-|
-|7.4|[x64](https://windows.php.net/downloads/pecl/releases/mcrypt/1.0.3/php_mcrypt-1.0.3-7.4-ts-vc15-x64.zip)|
-|7.3|[x64](https://windows.php.net/downloads/pecl/releases/mcrypt/1.0.3/php_mcrypt-1.0.3-7.3-ts-vc15-x64.zip)|
-|7.2|[x64](https://windows.php.net/downloads/pecl/releases/mcrypt/1.0.3/php_mcrypt-1.0.3-7.2-ts-vc15-x64.zip)|
+|7.4|[x64](https://windows.php.net/downloads/pecl/releases/mcrypt/1.0.4/php_mcrypt-1.0.4-7.4-ts-vc15-x64.zip)|
+|7.3|[x64](https://windows.php.net/downloads/pecl/releases/mcrypt/1.0.4/php_mcrypt-1.0.4-7.3-ts-vc15-x64.zip)|
+|7.2|[x64](https://windows.php.net/downloads/pecl/releases/mcrypt/1.0.4/php_mcrypt-1.0.4-7.2-ts-vc15-x64.zip)|
 
 把php_mcrypt.dll拷贝到"ext"中.
 
