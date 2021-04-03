@@ -40,6 +40,19 @@ return $_config[0];
 
 使用 错误抑制符 停止提示。
 修改Encrypt.php（.\system\libraries\）
+- Ln273
+```php
+$init_size = @mcrypt_get_iv_size($this->_get_cipher(), $this->_get_mode());
+```
+- Ln274
+```php
+$init_vect = @mcrypt_create_iv($init_size, MCRYPT_RAND);
+```
+- Ln275
+```php
+return $this->_add_cipher_noise($init_vect.@mcrypt_encrypt($this->_get_cipher(), 
+    $key, $data, $this->_get_mode(), $init_vect), $key);
+```
 - Ln291
 ```php
 $init_size = @mcrypt_get_iv_size($this->_get_cipher(), $this->_get_mode());
