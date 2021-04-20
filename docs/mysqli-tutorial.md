@@ -1,14 +1,14 @@
 ---
 title: "使用mysqli和mysql查询数据库"
 description: "MySQL示例数据库employees"
-date: 2020-10-10T20:26:39+08:00
+date: 2021-04-20T20:26:39+08:00
 ---
 
 # 导入数据
-导入MySQL示例数据库[employees](https://launchpad.net/test-db/)
+导入MySQL示例数据库[employees](https://github.com/datacharmer/test_db/releases/tag/v1.0.7)
 
 ```bash
-D:\progFiles\mariadb-10.2-winx64\employees_db>mysql < employees.sql -u DBAdmin -p
+C:\Users\tdtc\Downloads\test_db>%MYSQL57_HOME%\bin\mysql < employees.sql -u DBAdmin -p
 Enter password: *******
 INFO
 CREATING DATABASE STRUCTURE
@@ -27,7 +27,7 @@ LOADING titles
 INFO
 LOADING salaries
 
-D:\progFiles\mariadb-10.2-winx64\employees_db>
+C:\Users\tdtc\Downloads\test_db>
 ```
 
 # 查询数据
