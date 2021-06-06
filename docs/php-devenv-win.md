@@ -143,15 +143,23 @@ pause>nul
 ```
 
 # [phpMyAdmin](https://www.phpmyadmin.net/)
-如果使用本机mysql则无需配置！
+重命名config.sample.inc.php为config.inc.php
 ## 配置远程MySQL
-
-- 1）建立配置文件    
-  重命名config.sample.inc.php为config.inc.php
-- 2）添加服务器信息    
-  修改localhost值: 服务器IP。
+> 如果使用本机mysql则无需配置！
+- 添加服务器信息    
+  修改localhost值: 服务器IP
 ```bash
 $cfg['Servers'][$i]['host'] = '192.168.1.4';
+```
+
+## blowfish secret
+```bash
+The configuration file now needs a secret passphrase (blowfish_secret).
+```
+
+- config blowfish_secret
+```bash
+$cfg['blowfish_secret'] = 'qtdRoGmbc9{8IZr323xYcSN]0s)r$9b_JUnb{~Xz';
 ```
 
 # FAQ
@@ -206,3 +214,4 @@ extension=php_mcrypt.dll
 - [How to use PHP OPCache?](http://stackoverflow.com/questions/17224798/how-to-use-php-opcache)
 - [OpCache文档](http://php.net/manual/zh/opcache.configuration.php)
 - [微软停止支持PHP8](https://news-web.php.net/php.internals/110907)
+- [phpmyadmin-error-the-configuration-file-now-needs-a-secret-passphrase](https://serverfault.com/questions/615550/phpmyadmin-error-the-configuration-file-now-needs-a-secret-passphrase)
